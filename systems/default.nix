@@ -19,23 +19,21 @@
           };
         };
 
-      in {
-        inputs.nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules =
-            [
-              ({ config, pkgs, ... }: {
-                nixpkgs.overlays = [overlay-unstable];
+      in inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules =
+          [
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [overlay-unstable];
 
-                _module.args.packages = self.packages."${system}";
-                _module.args.inputs = inputs;
-                _module.args.system = system;
-              })
-            ]
-            ++ coreModules
-            ++ modules;
-        };
-      };
+              _module.args.packages = self.packages."${system}";
+              _module.args.inputs = inputs;
+              _module.args.system = system;
+            })
+          ]
+          ++ coreModules
+          ++ modules;
+      }
 
   in {
     flake.nixosConfigurations = {
