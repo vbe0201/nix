@@ -1,4 +1,4 @@
-{ config, modulesPath, unstable-pkgs, ...  }:
+{ config, modulesPath, pkgs, ...  }:
 
 {
   imports = [
@@ -25,7 +25,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    kernelPackages = unstable-pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.unstable.linuxPackages_latest;
   };
 
   # NOTE: Despite the name, this option is for Wayland too.

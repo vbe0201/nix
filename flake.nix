@@ -2,8 +2,8 @@
   description = "Configurations for my NixOS system";
 
   inputs = {
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
