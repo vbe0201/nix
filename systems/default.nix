@@ -3,6 +3,7 @@
   ## Core modules which are crucial for every system go here.
   ## These will be present on every NixOS machine by default.
   coreModules = [
+    ../nixos/locale.nix
     ../nixos/nix-daemon.nix
     ../nixos/users.nix
   ];
