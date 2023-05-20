@@ -28,4 +28,5 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  unstable.config.allowUnfree = true;
 }
