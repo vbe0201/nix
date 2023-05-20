@@ -2,7 +2,9 @@
 
   ## Core modules which are crucial for every system go here.
   ## These will be present on every NixOS machine by default.
-  coreModules = [];
+  coreModules = [
+    ../nixos/nix-daemon.nix
+  ];
 
   ## Defines a new NixOS system given the system specifier and
   ## a list of modules which extends upon `coreModules`.

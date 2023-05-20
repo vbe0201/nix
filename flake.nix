@@ -10,7 +10,9 @@
 
   outputs = inputs @ { self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit self inputs; } {
-      imports = [];
+      imports = [
+        ./systems
+      ];
 
       systems = ["x86_64-linux"];
     };
