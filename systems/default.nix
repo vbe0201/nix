@@ -4,6 +4,7 @@
   ## These will be present on every NixOS machine by default.
   coreModules = [
     ../nixos/nix-daemon.nix
+    ../nixos/users.nix
   ];
 
   ## Defines a new NixOS system given the system specifier and
