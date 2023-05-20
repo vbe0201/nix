@@ -33,7 +33,7 @@
           ]
           ++ coreModules
           ++ modules;
-      }
+      };
 
   in {
     flake.nixosConfigurations = {
