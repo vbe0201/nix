@@ -1,4 +1,4 @@
-{ lib, inputs, self, ... }: let
+{ self, lib, inputs, ... }: let
 
   ## Core modules which are crucial for every system go here.
   ## These will be present on every NixOS machine by default.
@@ -28,7 +28,7 @@
     };
 
 in {
-  flake.nixosConfigurations {
+  flake.nixosConfigurations = {
     # For every machine there is a dedicated .nix file which describes
     # hardware  configuration. Don't forget to include in `modules`.
 

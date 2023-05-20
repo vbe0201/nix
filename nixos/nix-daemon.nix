@@ -1,6 +1,6 @@
 ## Configures nix-daemon and the general operating environment.
 ## The options here try to be machine-agnostic for my needs.
-{...}: {
+{ ... }: {
   system.stateVersion = "22.11";
 
   nix = {
