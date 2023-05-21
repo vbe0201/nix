@@ -6,7 +6,6 @@
       ../core/locale.nix
       ../core/networking.nix
       ../core/nix-daemon.nix
-      ../core/ssh.nix
       ../core/users.nix
     ];
 
