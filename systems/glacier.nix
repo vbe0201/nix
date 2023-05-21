@@ -1,4 +1,4 @@
-{ overlays, config, modulesPath, pkgs, ... }: {
+{ config, modulesPath, pkgs, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -60,10 +60,5 @@
     interfaces.wlp35s0.useDHCP = true;
   };
 
-  nixpkgs = {
-    hostPlatform = "x86_64-linux";
-    overlays = [overlays.unstable-unfree-packages];
-
-    config.allowUnfree = true;
-  };
+  nixpkgs.hostPlatform = "x86_64-linux";
 }

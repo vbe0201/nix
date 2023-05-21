@@ -1,5 +1,7 @@
 { self, inputs, ... }:
   let
+    inherit (self) overlays;
+
     ## Core modules which are crucial for every system go here.
     ## These will be present on every NixOS machine by default.
     coreModules = [
@@ -16,10 +18,15 @@
     makeSystem = { system, modules }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit (self) overlays; };
         modules =
           [
             {
+              nixpkgs = {
+                overlays = [overlays.unstable-unfree-packages];
+
+                config.allowUnfree = true;
+              };
+
               _module.args.packages = self.packages."${system}";
               _module.args.inputs = inputs;
               _module.args.system = system;
