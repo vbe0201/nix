@@ -1,4 +1,4 @@
-{ self, lib, inputs, ... }:
+{ self, inputs, ... }:
   let
     ## Core modules which are crucial for every system go here.
     ## These will be present on every NixOS machine by default.
@@ -16,6 +16,7 @@
     makeSystem = { system, modules }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit (self) overlays; };
         modules =
           [
             {
@@ -29,23 +30,14 @@
       };
 
   in {
-    nixpkgs = {
-      overlays = [self.overlays.unstable-unfree-packages];
+    # For every machine there is a dedicated .nix file which describes
+    # hardware  configuration. Don't forget to include in `modules`.
 
-      config.allowUnfree = true;
-    };
-
-    flake.nixosConfigurations = {
-      # For every machine there is a dedicated .nix file which describes
-      # hardware  configuration. Don't forget to include in `modules`.
-
-      # My main desktop machine and daily driver.
-      # Used for just about anything.
-      glacier = makeSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./glacier.nix
-        ];
-      };
+    # My main desktop machine and daily driver. Used for just about anything.
+    glacier = makeSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./glacier.nix
+      ];
     };
   }
