@@ -1,6 +1,6 @@
 { self, inputs, ... }:
   let
-    inherit (builtins) map;
+    inherit (builtins) length lessThan map;
     inherit (inputs.nixpkgs.lib) optionals flatten;
     inherit (self) overlays;
 
@@ -30,7 +30,7 @@
 
     ## Defines a new NixOS system given the system specifier and
     ## a list of modules which extends upon `coreModules`.
-    makeSystem = { system, modules, home ? false, homeModules ? [] }:
+    makeSystem = { system, modules, homeModules ? [] }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = inputs;
@@ -48,7 +48,7 @@
           ]
           ++ coreModules
           ++ modules
-          ++ (optionals home [(makeHomeModule homeModules system)]);
+          ++ (optionals (length homeModules == 0) [(makeHomeModule homeModules system)]);
       };
 
   in {
@@ -61,7 +61,6 @@
       modules = [
         ./glacier.nix
       ];
-      home = true;
       homeModules = [
         ../home/git.nix
       ];
