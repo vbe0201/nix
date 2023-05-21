@@ -22,7 +22,7 @@
               _module.args.packages = self.packages."${system}";
               _module.args.inputs = inputs;
               _module.args.system = system;
-            })
+            }
           ]
           ++ coreModules
           ++ modules;
