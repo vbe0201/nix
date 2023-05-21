@@ -1,6 +1,6 @@
 { self, inputs, ... }:
   let
-    inherit (builtins) length lessThan map;
+    inherit (builtins) length map;
     inherit (inputs.nixpkgs.lib) optionals flatten;
     inherit (self) overlays;
 
@@ -48,7 +48,7 @@
           ]
           ++ coreModules
           ++ modules
-          ++ (optionals (length homeModules == 0) [(makeHomeModule homeModules system)]);
+          ++ (optionals (length homeModules != 0) [(makeHomeModule homeModules system)]);
       };
 
   in {
