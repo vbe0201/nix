@@ -4,11 +4,8 @@
   system.stateVersion = "22.11";
 
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-
     settings = {
+      experimental-features = ["nix-command" "flakes"];
       allowed-users = ["@wheel"];
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
