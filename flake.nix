@@ -11,11 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
-    let
-      inherit (self) outputs;
-
-    in {
+  outputs = { self, ... } @ inputs: {
       # TODO: packages, devShells
 
       # Export custom packages and modifications as overlays.
@@ -24,6 +20,6 @@
       # TODO: nixosModules, homeManagerModules
 
       # NixOS configuration entrypoint.
-      nixosConfigurations = import ./systems { inherit inputs self; };
+      nixosConfigurations = import ./systems { inherit self inputs; };
     };
 }

@@ -1,5 +1,7 @@
 { self, inputs, ... }:
   let
+    inherit (builtins) map;
+    inherit (inputs.nixpkgs.lib) optionals flatten;
     inherit (self) overlays;
 
     ## Core modules which are crucial for every system go here.
@@ -13,11 +15,25 @@
       inputs.home-manager.nixosModules.default
     ];
 
+    ## Defines `home-manager` modules for personal user accounts.
+    makeHomeModule = modules: system: {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = {
+        inherit inputs system;
+      };
+      home-manager.users.vale = { ... }: {
+        imports = modules;
+        home.stateVersion = "22.11";
+      };
+    };
+
     ## Defines a new NixOS system given the system specifier and
     ## a list of modules which extends upon `coreModules`.
-    makeSystem = { system, modules }:
+    makeSystem = { system, modules, home ? false, homeModules ? [] }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = inputs;
         modules =
           [
             {
@@ -31,7 +47,8 @@
             }
           ]
           ++ coreModules
-          ++ modules;
+          ++ modules
+          ++ (optionals home [(makeHomeModule homeModules system)]);
       };
 
   in {
@@ -43,6 +60,10 @@
       system = "x86_64-linux";
       modules = [
         ./glacier.nix
+      ];
+      home = true;
+      homeModules = [
+        ../home/git.nix
       ];
     };
   }
