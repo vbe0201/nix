@@ -1,4 +1,4 @@
-{ self, lib, inputs, outputs, ... }:
+{ self, lib, inputs, overlays, ... }:
   let
     ## Core modules which are crucial for every system go here.
     ## These will be present on every NixOS machine by default.
@@ -30,7 +30,7 @@
 
   in {
     nixpkgs = {
-      overlays = [outputs.overlays.unstable-unfree-packages];
+      overlays = [overlays.unstable-unfree-packages];
 
       config.allowUnfree = true;
     };
