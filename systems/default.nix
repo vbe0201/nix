@@ -21,15 +21,13 @@
         modules =
           [
             {
+              # Globally configure nixpkgs so that we can get unfree
+              # packages on both stable and unstable channels.
               nixpkgs = {
                 overlays = [overlays.unstable-unfree-packages];
 
                 config.allowUnfree = true;
               };
-
-              _module.args.packages = self.packages."${system}";
-              _module.args.inputs = inputs;
-              _module.args.system = system;
             }
           ]
           ++ coreModules
