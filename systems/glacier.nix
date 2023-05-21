@@ -59,8 +59,6 @@
 
     useDHCP = false;
     interfaces.wlp35s0.useDHCP = true;
-
-    networkmanager.enable = true;
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
