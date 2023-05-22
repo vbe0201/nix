@@ -67,6 +67,7 @@
       homeModules = [
         inputs.hyprland.homeManagerModules.default
 
+        ../home/alacritty.nix
         ../home/git.nix
         ../home/gpg.nix
         ../home/wayland
