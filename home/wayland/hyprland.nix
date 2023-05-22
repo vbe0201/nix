@@ -1,7 +1,9 @@
 { inputs, pkgs, system, ... }:
   let
     hyprland = inputs.hyprland.packages."${system}".default.override {
+      enableXWayland = true;
       nvidiaPatches = true;
+      hidpiXWayland = true;
     };
 
   in {

@@ -33,7 +33,7 @@
     makeSystem = { system, modules, homeModules ? [] }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = inputs;
+        specialArgs = inputs // { inherit system; };
         modules =
           [
             {
@@ -62,6 +62,7 @@
         inputs.hyprland.nixosModules.default
 
         ./glacier.nix
+        ../core/gui.nix
       ];
       homeModules = [
         inputs.hyprland.homeManagerModules.default
