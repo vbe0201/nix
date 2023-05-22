@@ -63,6 +63,7 @@
       ];
       homeModules = [
         ../home/git.nix
+        ../home/gpg.nix
       ];
     };
   }
