@@ -6,6 +6,11 @@
     userName = "Valentin B.";
     userEmail = "valentin.be@protonmail.com";
 
+    signing = {
+      key = "BC73773F6D8139A0";
+      signByDefault = true;
+    };
+
     extraConfig = {
       pull.rebase = true;
       init.defaultBranch = "main";
