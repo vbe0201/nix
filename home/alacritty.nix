@@ -29,6 +29,8 @@
           dynamic_padding = false;
 
           decorations = "full";
+
+          opacity = 1.0;
         };
 
         scrolling = {
@@ -55,8 +57,6 @@
           animation = "EaseOutExpo";
           duration = 0;
         };
-
-        background_opacity = 1.0;
 
         mouse = {
           double_click.threshold = 300;
@@ -102,11 +102,6 @@
           (bindKey "PageDown" "Shift" "ScrollPageDown" "~Alt")
           (bindKey "Home" "Shift" "ScrollToTop" "~Alt")
           (bindKey "End" "Shift" "ScrollToBottom" "~Alt")
-          (bindKey "Copy" "" "Copy" "")
-          (bindKey "Paste" "" "Paste" "")
-          (bindKey "Equals" "Control" "IncreaseFontSize" "")
-          (bindKey "Minus" "Control" "DecreaseFontSize" "")
-          (bindKey "Key0" "Control" "ResetFontSize" "")
         ];
       };
     };

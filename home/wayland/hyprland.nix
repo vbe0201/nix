@@ -40,8 +40,6 @@
         env = __GLX_VENDOR_LIBRARY_NAME,nvidia
         env = WLR_NO_HARDWARE_CURSORS,1
 
-        exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
         input {
           kb_layout = us # TODO: Switch to eurkey
           follow_mouse = 1
@@ -49,7 +47,7 @@
         }
 
         # Launch Terminal with SUPER + Enter.
-        bind = SUPER,Return,exec,$TERMINAL
+        bind = SUPER,Return,exec,alacritty
       '';
     };
   }
