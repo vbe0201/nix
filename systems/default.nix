@@ -59,11 +59,16 @@
     glacier = makeSystem {
       system = "x86_64-linux";
       modules = [
+        inputs.hyprland.nixosModules.default
+
         ./glacier.nix
       ];
       homeModules = [
+        inputs.hyprland.homeManagerModules.default
+
         ../home/git.nix
         ../home/gpg.nix
+        ../home/wayland
       ];
     };
   }
