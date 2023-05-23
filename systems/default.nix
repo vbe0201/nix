@@ -70,6 +70,7 @@
         ../home/alacritty.nix
         ../home/git.nix
         ../home/gpg.nix
+        ../home/vscode.nix
         ../home/wayland
       ];
     };
