@@ -5,7 +5,9 @@
     };
 
   in {
-    home.sessionVariables.TERMINAL = "${config.programs.alacritty.package}/bin/alacritty";
+    home.sessionVariables = {
+      TERMINAL = "${config.programs.alacritty.package}/bin/alacritty";
+    };
 
     programs.alacritty = {
       enable = true;

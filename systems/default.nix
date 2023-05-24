@@ -7,6 +7,7 @@
     ## Core modules which are crucial for every system go here.
     ## These will be present on every NixOS machine by default.
     coreModules = [
+      ../core/fonts.nix
       ../core/locale.nix
       ../core/networking.nix
       ../core/nix-daemon.nix
@@ -59,20 +60,17 @@
     glacier = makeSystem {
       system = "x86_64-linux";
       modules = [
-        inputs.hyprland.nixosModules.default
-
         ./glacier.nix
-        ../core/gui.nix
+        ../core/gui/kde.nix
         ../core/hw/nvidia.nix
       ];
       homeModules = [
-        inputs.hyprland.homeManagerModules.default
-
         ../home/alacritty.nix
         ../home/git.nix
         ../home/gpg.nix
+        ../home/programs.nix
         ../home/vscode.nix
-        ../home/wayland
+        ../home/x11
       ];
     };
   }
