@@ -7,6 +7,7 @@
       # Applications
       ghidra-bin
       gimp
+      keepassxc
       obs-studio
 
       # Communication
@@ -38,7 +39,6 @@
 
       # System utilities
       bat
-      direnv
       exa
       fd
       ffmpeg

@@ -40,8 +40,38 @@
           multiplier = 1;
         };
 
-        # TODO: fontconfig
-        # font = {};
+        font = {
+          normal = {
+            family = "Hack";
+            style = "Regular";
+          };
+
+          bold = {
+            family = "Hack";
+            style = "Bold";
+          };
+
+          italic = {
+            family = "Hack";
+            style = "Italic";
+          };
+
+          size = 12;
+
+          offset = {
+            x = 0;
+            y = 0;
+          };
+
+          glyph_offset = {
+            x = 0;
+            y = 0;
+          };
+
+          scale_with_dpi = true;
+
+          use_thin_strokes = false;
+        };
 
         draw_bold_text_with_bright_colors = true;
 
@@ -96,8 +126,7 @@
 
         live_config_reload = true;
 
-        # TODO: Set shell.
-        # shell.program = "/bin/zsh";
+        shell.program = "/bin/zsh";
 
         key_bindings = [
           (bindKey "PageUp" "Shift" "ScrollPageUp" "~Alt")
