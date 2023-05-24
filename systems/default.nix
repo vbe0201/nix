@@ -63,6 +63,7 @@
 
         ./glacier.nix
         ../core/gui.nix
+        ../core/hw/nvidia.nix
       ];
       homeModules = [
         inputs.hyprland.homeManagerModules.default

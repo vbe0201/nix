@@ -26,17 +26,7 @@
     kernelPackages = pkgs.unstable.linuxPackages_latest;
   };
 
-  # NOTE: Despite the name, this option is for Wayland too.
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-
-    opengl.enable = true;
-
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    nvidia.modesetting.enable = true;
-  };
+  hardware.cpu.amd.updateMicrocode = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/182bb213-c166-4288-8065-8d20378acf88";
