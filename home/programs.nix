@@ -16,16 +16,13 @@
       python3
       cmake
       devenv.packages."${system}".devenv
-      gcc
       gdb
       gnumake
       gradle
-      llvmPackages_latest.bintools
       llvmPackages_latest.clang
       llvmPackages_latest.lldb
       llvmPackages_latest.stdenv
       ninja
-      openjdk17
       unstable.openjdk19
       rustup
       sccache
@@ -41,7 +38,6 @@
 
       # System utilities
       bat
-      binutils
       direnv
       exa
       fd
