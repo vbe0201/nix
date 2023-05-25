@@ -4,6 +4,14 @@
       inherit key mods action mode;
     };
 
+    bindKeyNoMode = key: mods: action: {
+      inherit key mods action;
+    };
+
+    bindKeyNoModsOrModes = key: action: {
+      inherit key action;
+    };
+
   in {
     home.sessionVariables = {
       TERMINAL = "${config.programs.alacritty.package}/bin/alacritty";
@@ -131,6 +139,11 @@
           (bindKey "PageDown" "Shift" "ScrollPageDown" "~Alt")
           (bindKey "Home" "Shift" "ScrollToTop" "~Alt")
           (bindKey "End" "Shift" "ScrollToBottom" "~Alt")
+          (bindKeyNoModsOrModes "Copy" "Copy")
+          (bindKeyNoModsOrModes "Paste" "Paste")
+          (bindKeyNoMode "Equals" "Control" "IncreaseFontSize")
+          (bindKeyNoMode "Minus" "Control" "DecreaseFontSize")
+          (bindKeyNoMode "Key0" "Control" "ResetFontSize")
         ];
       };
     };
