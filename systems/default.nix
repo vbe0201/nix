@@ -73,7 +73,6 @@
         ../home/git.nix
         ../home/gpg.nix
         ../home/programs.nix
-        ../home/vscode.nix
         ../home/x11
         ../home/zsh.nix
       ];

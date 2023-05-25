@@ -12,6 +12,8 @@
   services.xserver = {
     enable = true;
 
+    layout = "eu";
+
     desktopManager.plasma5 = {
       enable = true;
       excludePackages = with pkgs.libsForQt5; [

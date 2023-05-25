@@ -9,6 +9,8 @@
       gimp
       keepassxc
       obs-studio
+      wineWowPackages.stable
+      winetricks
 
       # Communication
       discord
@@ -28,6 +30,7 @@
       rustup
       sccache
       valgrind
+      vscode
 
       # Archives
       ark
