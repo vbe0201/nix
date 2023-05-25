@@ -3,8 +3,15 @@
     inherit (inputs) devenv;
 
   in {
+    home.sessionVariables = {
+      RUSTC_WRAPPER = "sccache";
+    };
+
+    home.sessionPath = ["$HOME/.rustup/bin"];
+
     home.packages = with pkgs; [
       # Applications
+      flameshot
       ghidra-bin
       gimp
       keepassxc
