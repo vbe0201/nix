@@ -1,27 +1,13 @@
 { config, pkgs, ... }:
   let
-    inherit (pkgs) fetchFromGitHub;
-
     zshPlugin = src: rec {
       inherit src;
       name = src.pname;
       file = "share/${name}/${name}.zsh";
     };
 
-    ohMyZsh = fetchFromGitHub {
-      owner = "ohmyzsh";
-      repo = "ohmyzsh";
-      rev = "ec369bb38e873fa2e8954bc45bc192fdb0051313";
-      sha256 = "sha256-ZCQZyW+nOD/iYqDA/0L0fSPHbM2VywWWJxBxG2paslY=";
-    };
-
   in {
     home.packages = with pkgs; [comma];
-
-    programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
 
     programs.zsh = {
       enable = true;
@@ -47,18 +33,13 @@
         extended = true;
       };
 
-      plugins = with pkgs; [
-        (zshPlugin zsh-syntax-highlighting)
-        (zshPlugin zsh-history-substring-search)
-      ];
+      oh-my-zsh = {
+        enable = true;
+      };
 
       envExtra = ''
         export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
         mkdir -p $ZSH_CACHE_DIR/completions
-
-        function load_plugin() {
-          source "${ohMyZsh}/plugins/$1/$1.plugin.zsh"
-        }
       '';
     };
 
@@ -70,6 +51,11 @@
     };
 
     programs.nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.fzf = {
       enable = true;
       enableZshIntegration = true;
     };
