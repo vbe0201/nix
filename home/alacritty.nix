@@ -126,7 +126,7 @@
 
         live_config_reload = true;
 
-        shell.program = "/bin/zsh";
+        shell.program = "${pkgs.zsh}/bin/zsh";
 
         key_bindings = [
           (bindKey "PageUp" "Shift" "ScrollPageUp" "~Alt")

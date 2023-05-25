@@ -61,7 +61,11 @@
       system = "x86_64-linux";
       modules = [
         ./glacier.nix
+
+        ../core/zsh.nix
+
         ../core/gui/kde.nix
+
         ../core/hw/nvidia.nix
       ];
       homeModules = [
