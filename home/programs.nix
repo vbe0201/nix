@@ -5,6 +5,7 @@
   in {
     home.sessionVariables = {
       RUSTC_WRAPPER = "sccache";
+      GHIDRA_INSTALL_DIR = "${pkgs.ghidra-bin}/lib/ghidra";
     };
 
     home.sessionPath = ["$HOME/.rustup/bin"];
