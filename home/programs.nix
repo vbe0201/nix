@@ -22,6 +22,9 @@
       gdb
       gnumake
       gradle
+      jetbrains.clion
+      jetbrains.idea-ultimate
+      kotlin
       llvmPackages_latest.clang
       llvmPackages_latest.lldb
       llvmPackages_latest.stdenv
