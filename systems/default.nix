@@ -7,25 +7,34 @@
     ## Core modules which are crucial for every system go here.
     ## These will be present on every NixOS machine by default.
     coreModules = [
+      ../secrets
+
       ../core/fonts.nix
       ../core/locale.nix
       ../core/networking.nix
       ../core/nix-daemon.nix
       ../core/users.nix
+      ../core/hw/yubikey.nix
 
+      inputs.agenix.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
 
     ## Defines `home-manager` modules for personal user accounts.
     makeHomeModule = modules: system: {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = {
-        inherit inputs system;
-      };
-      home-manager.users.vale = { ... }: {
-        imports = modules;
-        home.stateVersion = "22.11";
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+
+        extraSpecialArgs = {
+          inherit inputs system;
+        };
+
+
+        users.vale = { ... }: {
+          imports = modules;
+          home.stateVersion = "22.11";
+        };
       };
     };
 
@@ -62,10 +71,9 @@
       modules = [
         ./glacier.nix
 
+        ../core/openvpn.nix
         ../core/zsh.nix
-
         ../core/gui/kde.nix
-
         ../core/hw/nvidia.nix
       ];
       homeModules = [

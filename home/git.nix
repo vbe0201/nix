@@ -7,7 +7,7 @@
     userEmail = "valentin.be@protonmail.com";
 
     signing = {
-      key = "BC73773F6D8139A0";
+      key = "86E925845C0F9279";
       signByDefault = true;
     };
 

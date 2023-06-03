@@ -14,6 +14,11 @@
       url = "github:cachix/devenv/latest";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, ... } @ inputs: {

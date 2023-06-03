@@ -1,9 +1,36 @@
 { pkgs, ... }: {
-  programs.gpg.enable = true;
+  programs.gpg = {
+    enable = true;
 
-  home.packages = with pkgs; [pinentry-qt];
+    settings = {
+      default-key = "0x0ADE9C5EE5A17908";
+      trusted-key = "0x0ADE9C5EE5A17908";
+
+      no-greeting = true;
+      throw-keyids = true;
+    };
+
+    publicKeys = [
+      {
+        source = ./keys/vale.asc;
+        trust = 5;
+      }
+    ];
+  };
+
+  home.packages = with pkgs; [
+    # Tools for backing up keys.
+    paperkey
+    pgpdump
+    cryptsetup
+
+    # Securely accept passphrases.
+    pinentry-qt
+  ];
+
   services.gpg-agent = {
     enable = true;
+    enableSshSupport = true;
     pinentryFlavor = "qt";
   };
 }
