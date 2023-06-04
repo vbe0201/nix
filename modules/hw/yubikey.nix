@@ -6,7 +6,7 @@
     yubikey-personalization
   ] ++ lib.optionals (config.services.xserver.enable) [
     yubikey-personalization-gui
-    yubioath-desktop
+    yubioath-flutter
   ];
 
   services = {

@@ -1,4 +1,3 @@
-## Personally preferred date, time and localization settings.
 { ... }: {
   time.timeZone = "Europe/Berlin";
 

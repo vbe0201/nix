@@ -4,8 +4,10 @@
   ];
 
   boot = {
-    tmpOnTmpfs = true;
-    tmpOnTmpfsSize = "75%";
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "75%";
+    };
 
     initrd.availableKernelModules = [
       "nvme"
@@ -49,6 +51,4 @@
     useDHCP = false;
     interfaces.wlp35s0.useDHCP = true;
   };
-
-  nixpkgs.hostPlatform = "x86_64-linux";
 }

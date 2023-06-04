@@ -1,5 +1,3 @@
-## Configures nix-daemon and the general operating environment.
-## The options here try to be machine-agnostic for my needs.
 { ... }: {
   system.stateVersion = "22.11";
 
@@ -11,6 +9,7 @@
       auto-optimise-store = true;
     };
 
+    # Optimise the Nix store every day at 8pm.
     optimise = {
       automatic = true;
       dates = ["20:00"];

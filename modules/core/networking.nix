@@ -1,5 +1,3 @@
-## Default networking configuration using NetworkManager.
-## Also enables remote access using ssh.
 { ... }: {
   networking = {
     networkmanager.enable = true;
@@ -14,9 +12,12 @@
 
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
-    permitRootLogin = "no";
+
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+    };
 
     extraConfig = ''
       AllowAgentForwarding no

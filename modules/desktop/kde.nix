@@ -1,7 +1,3 @@
-## Sets up a global installation of the KDE Plasma 5 environment.
-##
-## This module is intended for X11-based systems. Further tweaks
-## will be required to make it play nicely with Wayland.
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     xdg-utils
@@ -14,15 +10,15 @@
 
     layout = "eu";
 
-    desktopManager.plasma5 = {
-      enable = true;
-      excludePackages = with pkgs.libsForQt5; [
-        khelpcenter
-        konsole
-      ];
-    };
-
+    desktopManager.plasma5.enable = true;
     displayManager.sddm.enable = true;
+  };
+
+  environment.plasma5 = {
+    excludePackages = with pkgs.libsForQt5; [
+      khelpcenter
+      konsole
+    ];
   };
 
   services.printing.enable = true;

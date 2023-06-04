@@ -1,13 +1,12 @@
-## Installs universally useful fonts on the system.
 { pkgs, ... }: {
   fonts = {
     fontDir.enable = true;
     enableDefaultFonts = true;
 
     fontconfig.defaultFonts = {
-      serif = ["Noto Serif Nerd Font" "Noto Serif"];
+      serif = ["NotoSerif Nerd Font" "Noto Serif"];
       sansSerif = ["Hack Nerd Font" "NotoSans Nerd Font" "Noto Sans"];
-      monospace = ["Fira Code Nerd Font" "Fira Code Font"];
+      monospace = ["FiraCode Nerd Font" "Fira Code"];
       emoji = ["Noto Color Emoji"];
     };
 

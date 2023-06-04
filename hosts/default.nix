@@ -1,35 +1,30 @@
-{ self, inputs, ... }:
+{ inputs, outputs, ... }:
   let
     inherit (builtins) length map;
     inherit (inputs.nixpkgs.lib) optionals flatten;
-    inherit (self) overlays;
+    inherit (outputs) overlays;
 
     ## Core modules which are crucial for every system go here.
     ## These will be present on every NixOS machine by default.
     coreModules = [
-      ../secrets
+      ../modules/core
+      ../modules/hw/yubikey.nix
 
-      ../core/fonts.nix
-      ../core/locale.nix
-      ../core/networking.nix
-      ../core/nix-daemon.nix
-      ../core/users.nix
-      ../core/hw/yubikey.nix
+      ../secrets
 
       inputs.agenix.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
 
-    ## Defines `home-manager` modules for personal user accounts.
-    makeHomeModule = modules: system: {
+    ## Defines a home-manager module for the `vale` user.
+    makeHome = modules: system: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
 
         extraSpecialArgs = {
-          inherit inputs system;
+          inherit inputs outputs system;
         };
-
 
         users.vale = { ... }: {
           imports = modules;
@@ -38,8 +33,7 @@
       };
     };
 
-    ## Defines a new NixOS system given the system specifier and
-    ## a list of modules which extends upon `coreModules`.
+    ## Defines a new NixOS system.
     makeSystem = { system, modules, homeModules ? [] }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
@@ -50,31 +44,27 @@
               # Globally configure nixpkgs so that we can get unfree
               # packages on both stable and unstable channels.
               nixpkgs = {
+                hostPlatform = system;
                 overlays = [overlays.unstable-unfree-packages];
-
                 config.allowUnfree = true;
               };
             }
           ]
           ++ coreModules
           ++ modules
-          ++ (optionals (length homeModules != 0) [(makeHomeModule homeModules system)]);
+          ++ (optionals (length homeModules != 0) [(makeHome homeModules system)]);
       };
 
   in {
-    # For every machine there is a dedicated .nix file which describes
-    # hardware  configuration. Don't forget to include in `modules`.
-
-    # My main desktop machine and daily driver. Used for just about anything.
+    # My main desktop machine and daily driver.
     glacier = makeSystem {
       system = "x86_64-linux";
       modules = [
         ./glacier.nix
 
-        ../core/openvpn.nix
-        ../core/zsh.nix
-        ../core/gui/kde.nix
-        ../core/hw/nvidia.nix
+        ../modules/desktop/kde.nix
+        ../modules/hw/nvidia.nix
+        ../modules/vpn/sext.nix
       ];
       homeModules = [
         ../home/alacritty.nix

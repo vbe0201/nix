@@ -1,6 +1,3 @@
-## Reusable module for configuring NVIDIA GPUs.
-##
-## Can be used on both X11 and Wayland.
 { config, pkgs, ... }: {
   # Make sure nouveau never runs alongside the official driver.
   boot.blacklistedKernelModules = ["nouveau"];

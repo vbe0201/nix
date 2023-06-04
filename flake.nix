@@ -1,12 +1,12 @@
 {
-  description = "Configurations for my NixOS system";
+  description = "Personal NixOS configurations";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,15 +21,28 @@
     };
   };
 
-  outputs = { self, ... } @ inputs: {
-      # TODO: packages, devShells
+  outputs = { self, nixpkgs, ... } @ inputs:
+    let
+      inherit (self) outputs;
+
+      forEachSystem = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+      ];
+
+      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+
+    in {
+      # Define custom packages for the system.
+      packages = forEachPkgs (pkgs: (import ./pkgs { inherit pkgs; }));
+
+      # A development shell for bootstrapping the flake
+      # configuration on a fresh system installation.
+      devShells = forEachPkgs (pkgs: import ./shell.nix { inherit pkgs; });
 
       # Export custom packages and modifications as overlays.
       overlays = import ./overlays { inherit inputs; };
 
-      # TODO: nixosModules, homeManagerModules
-
-      # NixOS configuration entrypoint.
-      nixosConfigurations = import ./systems { inherit self inputs; };
+      # Entrypoint to all NixOS systems this config defines.
+      nixosConfigurations = import ./hosts { inherit inputs outputs; };
     };
 }
