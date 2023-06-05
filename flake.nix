@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -31,7 +36,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, agenix-rekey, ... } @ inputs:
     let
       inherit (self) outputs;
 
@@ -56,5 +61,14 @@
 
       # Entrypoint to all NixOS systems this config defines.
       nixosConfigurations = import ./hosts { inherit inputs outputs; };
+
+      # Define `agenix-rekey` apps for conveniently rekeying
+      # the YubiKey system secrets.
+      apps = forEachSystem (sys:
+        let
+          pkgs = import nixpkgs { system = "${sys}"; };
+
+        in agenix-rekey.defineApps self pkgs self.nixosConfigurations
+      );
     };
 }

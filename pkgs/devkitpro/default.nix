@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, stdenv }:
   let
     devkitArmImage = pkgs.dockerTools.pullImage {
       imageName = "devkitpro/devkitarm";
@@ -21,7 +21,7 @@
       finalImageTag = "20230526";
     };
 
-    makeDevKit = name: image: pkgs.stdenv.mkDerivation {
+    makeDevKit = name: image: stdenv.mkDerivation {
       name = name;
       src = image;
 
