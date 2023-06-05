@@ -53,6 +53,11 @@
                 ];
                 config.allowUnfree = true;
               };
+
+              # Globally install the `vix` automation utility.
+              environment.systemPackages = [
+                outputs.packages.${system}.vix
+              ];
             }
           ]
           ++ coreModules

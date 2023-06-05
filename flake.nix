@@ -49,7 +49,8 @@
     in {
       # Define custom packages for the system.
       packages = forEachPkgs (pkgs:
-        (import ./pkgs { inherit pkgs; })
+        (import ./pkgs { inherit pkgs; }) //
+        (import ./vix { inherit pkgs; })
       );
 
       # A development shell for bootstrapping the flake

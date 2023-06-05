@@ -1,0 +1,14 @@
+[package]
+name = "vix"
+version = "0.0.0"
+authors = ["Valentin B. <valentin.be@protonmail.com>"]
+description = "System automation utility"
+edition = "2021"
+
+[dependencies]
+
+[profile.release]
+strip = true
+codegen-units = 1
+lto = "thin"
+panic = "abort"
