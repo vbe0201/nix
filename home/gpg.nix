@@ -12,7 +12,7 @@
 
     publicKeys = [
       {
-        source = ./keys/vale.asc;
+        source = ./keys/yubikey.asc;
         trust = 5;
       }
     ];
