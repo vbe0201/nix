@@ -78,6 +78,8 @@
         ../home/programs.nix
         ../home/x11
         ../home/zsh.nix
+
+        inputs.nix-index-database.hmModules.nix-index
       ];
     };
   }

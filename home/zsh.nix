@@ -7,8 +7,6 @@
     };
 
   in {
-    home.packages = with pkgs; [comma];
-
     programs.zsh = {
       enable = true;
 
@@ -56,6 +54,8 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    programs.nix-index-database.comma.enable = true;
 
     programs.fzf = {
       enable = true;
