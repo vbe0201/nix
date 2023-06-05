@@ -66,6 +66,7 @@
       modules = [
         ./glacier.nix
 
+        ../modules/docker.nix
         ../modules/desktop/kde.nix
         ../modules/hw/nvidia.nix
         ../modules/vpn/sext.nix

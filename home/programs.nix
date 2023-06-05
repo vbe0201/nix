@@ -56,6 +56,7 @@
       exa
       fd
       ffmpeg
+      nix-prefetch-docker
       ntfs3g
       pciutils
       ripgrep

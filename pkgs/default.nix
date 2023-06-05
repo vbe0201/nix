@@ -1,1 +1,5 @@
-{ pkgs }: rec {}
+{ pkgs }: {
+  include = [
+    ./devkitpro
+  ];
+}
