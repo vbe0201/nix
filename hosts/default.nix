@@ -23,7 +23,7 @@
         useUserPackages = true;
 
         extraSpecialArgs = {
-          inherit inputs outputs system;
+          inherit inputs outputs;
         };
 
         users.vale = { ... }: {
