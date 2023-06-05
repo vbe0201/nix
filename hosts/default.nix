@@ -45,7 +45,11 @@
               # packages on both stable and unstable channels.
               nixpkgs = {
                 hostPlatform = system;
-                overlays = [overlays.unstable-unfree-packages];
+                overlays = [
+                  inputs.rust-overlay.overlays.default
+
+                  overlays.unstable-unfree-packages
+                ];
                 config.allowUnfree = true;
               };
             }

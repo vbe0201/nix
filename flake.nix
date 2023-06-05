@@ -19,6 +19,11 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { self, nixpkgs, ... } @ inputs:
@@ -33,7 +38,9 @@
 
     in {
       # Define custom packages for the system.
-      packages = forEachPkgs (pkgs: (import ./pkgs { inherit pkgs; }));
+      packages = forEachPkgs (pkgs:
+        (import ./pkgs { inherit pkgs; })
+      );
 
       # A development shell for bootstrapping the flake
       # configuration on a fresh system installation.
