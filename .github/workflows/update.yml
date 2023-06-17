@@ -1,0 +1,27 @@
+name: "Update flake.lock"
+
+on:
+  schedule:
+    - cron: "0 1 1 * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - run: nix develop --command nix flake update
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "[CI] Update flake.lock"
+          branch: update
+          branch-suffix: timestamp
+          delete-branch: true
+          reviewers: vbe0201
