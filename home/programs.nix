@@ -25,7 +25,7 @@
       discord
 
       # Development
-      unstable.python3
+      python311
       cmake
       devenv.packages."${system}".devenv
       gdb
