@@ -73,16 +73,19 @@
         ./glacier.nix
 
         ../modules/docker.nix
+        ../modules/steam.nix
         ../modules/desktop/kde.nix
         ../modules/hw/nvidia.nix
         ../modules/vpn/sext.nix
       ];
       homeModules = [
+        ../home/x11
+
         ../home/alacritty.nix
+        ../home/firefox.nix
         ../home/git.nix
         ../home/gpg.nix
         ../home/programs.nix
-        ../home/x11
         ../home/zsh.nix
 
         inputs.nix-index-database.hmModules.nix-index

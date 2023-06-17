@@ -8,7 +8,8 @@
       GHIDRA_INSTALL_DIR = "${pkgs.ghidra-bin}/lib/ghidra";
     };
 
-    home.sessionPath = ["$HOME/.rustup/bin"];
+    # rustup and cargo install binaries to this path.
+    home.sessionPath = ["$HOME/.cargo/bin"];
 
     home.packages = with pkgs; [
       # Applications
@@ -24,7 +25,7 @@
       discord
 
       # Development
-      python3
+      unstable.python3
       cmake
       devenv.packages."${system}".devenv
       gdb
@@ -37,7 +38,6 @@
       llvmPackages_latest.lldb
       llvmPackages_latest.stdenv
       ninja
-      unstable.openjdk19
       rustup
       sccache
       valgrind
@@ -61,7 +61,6 @@
       pciutils
       ripgrep
       tokei
-      vim
       wget
     ];
   }
