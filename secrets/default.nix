@@ -21,5 +21,6 @@
     rekey.masterIdentities = [yubikeyIdentity];
 
     age.secrets.sext_ovpn.file = ./sext.ovpn.age;
+    age.secrets.sext_creds.file = ./sext-creds.auth.age;
     age.secrets.vale_password.file = ./vale-password.age;
   }

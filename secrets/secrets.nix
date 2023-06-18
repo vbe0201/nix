@@ -4,6 +4,7 @@ let
 in {
   # OpenVPN network configurations.
   "sext.ovpn.age".publicKeys = [yubikey];
+  "sext-creds.auth.age".publicKeys = [yubikey];
 
   # User account passwords.
   "vale-password.age".publicKeys = [yubikey];
