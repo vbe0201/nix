@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   programs.gpg = {
     enable = true;
 
@@ -8,6 +8,11 @@
 
       no-greeting = true;
       throw-keyids = true;
+    };
+
+    scdaemonSettings = {
+      disable-ccid = true;
+      reader-port = "Yubico Yubi";
     };
 
     publicKeys = [
@@ -31,6 +36,7 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
+    enableScDaemon = true;
     pinentryFlavor = "qt";
   };
 }
