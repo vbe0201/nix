@@ -36,7 +36,7 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    enableScDaemon = true;
+    enableZshIntegration = true;
     pinentryFlavor = "qt";
   };
 }
