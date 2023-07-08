@@ -14,6 +14,7 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "wireshark"
       ];
 
       openssh.authorizedKeys.keys = publicKeys;

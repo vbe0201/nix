@@ -20,6 +20,7 @@
       obs-studio
       wineWowPackages.stable
       winetricks
+      wireshark
 
       # Communication
       discord
