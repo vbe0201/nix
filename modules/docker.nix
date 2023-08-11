@@ -12,4 +12,10 @@
       autoPrune.enable = true;
     };
   };
+
+  environment.sessionVariables = {
+    # `cross` is a utility for cross-compiling Rust programs.
+    # This is needed to make it work with rootless Docker setup.
+    CROSS_ROOTLESS_CONTAINER_ENGINE = "1";
+  };
 }

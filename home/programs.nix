@@ -18,8 +18,6 @@
       gimp
       keepassxc
       obs-studio
-      wineWowPackages.stable
-      winetricks
       wireshark
 
       # Communication
@@ -27,22 +25,25 @@
 
       # Development
       python311
-      cmake
       devenv.packages."${system}".devenv
       gdb
       gnumake
-      gradle
-      jetbrains.clion
-      jetbrains.idea-ultimate
-      kotlin
+      unstable.jetbrains.clion
+      unstable.jetbrains.rider
       llvmPackages_latest.clang
       llvmPackages_latest.lldb
       llvmPackages_latest.stdenv
-      ninja
       rustup
       sccache
       valgrind
       vscode
+
+      # Emulation
+      citra-nightly
+      ryujinx
+      dolphin-emu
+      melonDS
+      duckstation
 
       # Archives
       ark
