@@ -83,6 +83,7 @@
 
         ../home/alacritty.nix
         ../home/firefox.nix
+        ../home/gaming.nix
         ../home/git.nix
         ../home/gpg.nix
         ../home/programs.nix
