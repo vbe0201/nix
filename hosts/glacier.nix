@@ -25,6 +25,8 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
+    supportedFilesystems = ["ntfs"];
+
     kernelPackages = pkgs.unstable.linuxPackages_latest;
   };
 
