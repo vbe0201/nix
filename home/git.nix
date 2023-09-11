@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, isWSL, ... }: {
   programs.git = {
     enable = true;
     package = pkgs.unstable.gitAndTools.gitFull;
@@ -7,7 +7,7 @@
     userEmail = "valentin.be@protonmail.com";
 
     signing = {
-      key = "86E925845C0F9279";
+      key = if (isWSL) then "7705337EDFD49C2F" else "86E925845C0F9279";
       signByDefault = true;
     };
 

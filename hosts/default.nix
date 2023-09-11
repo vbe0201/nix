@@ -8,23 +8,23 @@
     ## These will be present on every NixOS machine by default.
     coreModules = [
       ../modules/core
-      ../modules/hw/yubikey.nix
 
       ../secrets
 
       inputs.agenix.nixosModules.default
-      inputs.agenix-rekey.nixosModules.default
+      #inputs.agenix-rekey.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
 
     ## Defines a home-manager module for the `vale` user.
-    makeHome = modules: system: {
+    makeHome = isWSL: modules: system: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
 
         extraSpecialArgs = {
           inherit inputs outputs;
+          inherit isWSL; 
         };
 
         users.vale = { ... }: {
@@ -35,10 +35,10 @@
     };
 
     ## Defines a new NixOS system.
-    makeSystem = { system, modules, homeModules ? [] }:
+    makeSystem = { system, modules, isWSL, homeModules ? [] }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = inputs // { inherit system; };
+        specialArgs = inputs // { inherit system isWSL; };
         modules =
           [
             {
@@ -62,7 +62,7 @@
           ]
           ++ coreModules
           ++ modules
-          ++ (optionals (length homeModules != 0) [(makeHome homeModules system)]);
+          ++ (optionals (length homeModules != 0) [(makeHome isWSL homeModules system)]);
       };
 
   in {
@@ -76,14 +76,34 @@
         ../modules/steam.nix
         ../modules/desktop/kde.nix
         ../modules/hw/nvidia.nix
+        ../modules/hw/yubikey.nix
         ../modules/vpn/sext.nix
       ];
+      isWSL = false;
       homeModules = [
         ../home/x11
 
         ../home/alacritty.nix
         ../home/firefox.nix
         ../home/gaming.nix
+        ../home/git.nix
+        ../home/gpg.nix
+        ../home/programs.nix
+        ../home/zsh.nix
+
+        inputs.nix-index-database.hmModules.nix-index
+      ];
+    };
+
+    spectre = makeSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./spectre.nix
+
+        inputs.nixos-wsl.nixosModules.wsl
+      ];
+      isWSL = true;
+      homeModules = [
         ../home/git.nix
         ../home/gpg.nix
         ../home/programs.nix

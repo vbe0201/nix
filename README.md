@@ -41,3 +41,9 @@ These are links kept here because I regularly forget about them.
 - [Tour of Nix](https://nixcloud.io/tour/?id=1)
 
 - [Nix Pills](https://nixos.org/guides/nix-pills/)
+
+### WSL
+
+- [Visual Studio Code remote connections to WSL](https://github.com/sonowz/vscode-remote-wsl-nixos)
+
+- [YubiKey and other USB devices](https://learn.microsoft.com/en-us/windows/wsl/connect-usb)

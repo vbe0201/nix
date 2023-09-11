@@ -1,10 +1,11 @@
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, isWSL, ... }:
   let
     inherit (inputs) devenv;
 
   in {
     home.sessionVariables = {
       RUSTC_WRAPPER = "sccache";
+    } // lib.optionalAttrs (!isWSL) {
       GHIDRA_INSTALL_DIR = "${pkgs.ghidra-bin}/lib/ghidra";
     };
 
@@ -12,6 +13,20 @@
     home.sessionPath = ["$HOME/.cargo/bin"];
 
     home.packages = with pkgs; [
+      # Development
+      devenv.packages."${system}".devenv
+      rustup
+      sccache
+
+      # System utilities
+      ouch
+      bat
+      exa
+      fd
+      ripgrep
+      tokei
+      wget
+    ] ++ lib.optionals (!isWSL) [
       # Applications
       flameshot
       ghidra-bin
@@ -25,7 +40,6 @@
 
       # Development
       python311
-      devenv.packages."${system}".devenv
       gdb
       gnumake
       unstable.jetbrains.clion
@@ -33,17 +47,8 @@
       llvmPackages_latest.clang
       llvmPackages_latest.lldb
       llvmPackages_latest.stdenv
-      rustup
-      sccache
       valgrind
       vscode
-
-      # Emulation
-      citra-nightly
-      ryujinx
-      dolphin-emu
-      melonDS
-      duckstation
 
       # Archives
       ark
@@ -54,15 +59,9 @@
       p7zip
 
       # System utilities
-      bat
-      exa
-      fd
       ffmpeg
       nix-prefetch-docker
       ntfs3g
       pciutils
-      ripgrep
-      tokei
-      wget
     ];
   }
