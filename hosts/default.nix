@@ -12,7 +12,6 @@
       ../secrets
 
       inputs.agenix.nixosModules.default
-      #inputs.agenix-rekey.nixosModules.default
       inputs.home-manager.nixosModules.default
     ];
 
@@ -78,6 +77,8 @@
         ../modules/hw/nvidia.nix
         ../modules/hw/yubikey.nix
         ../modules/vpn/sext.nix
+
+        inputs.agenix-rekey.nixosModules.default
       ];
       isWSL = false;
       homeModules = [
@@ -95,6 +96,7 @@
       ];
     };
 
+    # A development-oriented NixOS installation in Windows Subsystem Linux.
     spectre = makeSystem {
       system = "x86_64-linux";
       modules = [
