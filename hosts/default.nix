@@ -90,6 +90,7 @@
         ../home/git.nix
         ../home/gpg.nix
         ../home/programs.nix
+        ../home/xdg.nix
         ../home/zsh.nix
 
         inputs.nix-index-database.hmModules.nix-index
@@ -109,6 +110,7 @@
         ../home/git.nix
         ../home/gpg.nix
         ../home/programs.nix
+        ../home/xdg.nix
         ../home/zsh.nix
 
         inputs.nix-index-database.hmModules.nix-index
