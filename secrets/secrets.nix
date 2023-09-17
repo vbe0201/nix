@@ -5,8 +5,7 @@ let
     spectre = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0p+bIcJc2yYukRxv3KCXnlMGsYYnPl2yajBbWgqFVt valentin.be@protonmail.com";
   };
 
-  keysForSystems = sys: bultins.map(s: systems."${s}") sys;
-
+  keysForSystems = sys: bultins.map (s: systems."${s}") sys;
 in {
   # System-specific 3DS AES keys.
   "3ds-aes-keys.age".publicKeys = [yubikey];

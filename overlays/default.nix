@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   ## An overlay which enables accessing unstable nixpkgs
   ## through `pkgs.unstable`, when applied.
   ##

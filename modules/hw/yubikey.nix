@@ -1,13 +1,20 @@
-{ config, pkgs, lib, ... }: {
-  environment.systemPackages = with pkgs; [
-    yubico-piv-tool
-    yubikey-manager
-    yubikey-manager-qt
-    yubikey-personalization
-  ] ++ lib.optionals (config.services.xserver.enable) [
-    yubikey-personalization-gui
-    yubioath-flutter
-  ];
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  environment.systemPackages = with pkgs;
+    [
+      yubico-piv-tool
+      yubikey-manager
+      yubikey-manager-qt
+      yubikey-personalization
+    ]
+    ++ lib.optionals (config.services.xserver.enable) [
+      yubikey-personalization-gui
+      yubioath-flutter
+    ];
 
   services = {
     pcscd.enable = true;

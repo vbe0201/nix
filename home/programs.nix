@@ -1,18 +1,25 @@
-{ inputs, lib, pkgs, isWSL, ... }:
-  let
-    inherit (inputs) devenv;
-
-  in {
-    home.sessionVariables = {
+{
+  inputs,
+  lib,
+  pkgs,
+  isWSL,
+  ...
+}: let
+  inherit (inputs) devenv;
+in {
+  home.sessionVariables =
+    {
       RUSTC_WRAPPER = "sccache";
-    } // lib.optionalAttrs (!isWSL) {
+    }
+    // lib.optionalAttrs (!isWSL) {
       GHIDRA_INSTALL_DIR = "${pkgs.ghidra-bin}/lib/ghidra";
     };
 
-    # rustup and cargo install binaries to this path.
-    home.sessionPath = ["$HOME/.cargo/bin"];
+  # rustup and cargo install binaries to this path.
+  home.sessionPath = ["$HOME/.cargo/bin"];
 
-    home.packages = with pkgs; [
+  home.packages = with pkgs;
+    [
       # Development
       devenv.packages."${system}".devenv
       rustup
@@ -26,7 +33,8 @@
       ripgrep
       tokei
       wget
-    ] ++ lib.optionals (!isWSL) [
+    ]
+    ++ lib.optionals (!isWSL) [
       # Applications
       flameshot
       ghidra-bin
@@ -48,7 +56,6 @@
       llvmPackages_latest.lldb
       llvmPackages_latest.stdenv
       valgrind
-      vscode
 
       # Archives
       ark
@@ -64,4 +71,4 @@
       ntfs3g
       pciutils
     ];
-  }
+}

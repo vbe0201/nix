@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # We need to enable zsh system-wide even when it's managed
   # by home-manager as some files will not be sourced otherwise.
   programs.zsh.enable = true;

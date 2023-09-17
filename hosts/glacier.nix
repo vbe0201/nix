@@ -1,4 +1,8 @@
-{ config, modulesPath, pkgs, ... }: {
+{
+  modulesPath,
+  pkgs,
+  ...
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -33,11 +37,11 @@
   hardware.cpu.amd.updateMicrocode = true;
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/182bb213-c166-4288-8065-8d20378acf88";
+    device = "/dev/disk/by-uuid/42993a77-a622-4198-8798-7edf43e59107";
     fsType = "ext4";
   };
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DB14-A397";
+    device = "/dev/disk/by-uuid/CC89-57F0";
     fsType = "vfat";
   };
   fileSystems."/home" = {
@@ -45,7 +49,9 @@
     fsType = "ext4";
   };
 
-  swapDevices = [];
+  swapDevices = [
+    {device = "/dev/disk/by-uuid/a5acf252-9402-4724-970c-ba3dd5645402";}
+  ];
 
   networking = {
     hostName = "glacier";

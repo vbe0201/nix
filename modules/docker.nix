@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   # Rootless Docker setup for the user.
   virtualisation = {
     containers.enable = true;

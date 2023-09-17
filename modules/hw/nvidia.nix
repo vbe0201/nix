@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # Make sure nouveau never runs alongside the official driver.
   boot.blacklistedKernelModules = ["nouveau"];
 

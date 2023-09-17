@@ -41,40 +41,44 @@
     };
   };
 
-  outputs = { self, nixpkgs, agenix-rekey, ... } @ inputs:
-    let
-      inherit (self) outputs;
+  outputs = {
+    self,
+    nixpkgs,
+    agenix-rekey,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
 
-      forEachSystem = nixpkgs.lib.genAttrs [
-        "x86_64-linux"
-      ];
+    forEachSystem = nixpkgs.lib.genAttrs [
+      "x86_64-linux"
+    ];
 
-      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+  in {
+    # Define custom packages for the system.
+    packages = forEachPkgs (
+      pkgs:
+        (import ./pkgs {inherit pkgs;})
+        // (import ./vix {inherit pkgs;})
+    );
 
-    in {
-      # Define custom packages for the system.
-      packages = forEachPkgs (pkgs:
-        (import ./pkgs { inherit pkgs; }) //
-        (import ./vix { inherit pkgs; })
-      );
+    # A development shell for bootstrapping the flake
+    # configuration on a fresh system installation.
+    devShells = forEachPkgs (pkgs: import ./shell.nix {inherit pkgs;});
 
-      # A development shell for bootstrapping the flake
-      # configuration on a fresh system installation.
-      devShells = forEachPkgs (pkgs: import ./shell.nix { inherit pkgs; });
+    # Export custom packages and modifications as overlays.
+    overlays = import ./overlays {inherit inputs;};
 
-      # Export custom packages and modifications as overlays.
-      overlays = import ./overlays { inherit inputs; };
+    # Entrypoint to all NixOS systems this config defines.
+    nixosConfigurations = import ./hosts {inherit inputs outputs;};
 
-      # Entrypoint to all NixOS systems this config defines.
-      nixosConfigurations = import ./hosts { inherit inputs outputs; };
-
-      # Define `agenix-rekey` apps for conveniently rekeying
-      # the YubiKey system secrets.
-      apps = forEachSystem (sys:
-        let
-          pkgs = import nixpkgs { system = "${sys}"; };
-
-        in agenix-rekey.defineApps self pkgs self.nixosConfigurations
-      );
-    };
+    # Define `agenix-rekey` apps for conveniently rekeying
+    # the YubiKey system secrets.
+    apps = forEachSystem (
+      sys: let
+        pkgs = import nixpkgs {system = "${sys}";};
+      in
+        agenix-rekey.defineApps self pkgs self.nixosConfigurations
+    );
+  };
 }

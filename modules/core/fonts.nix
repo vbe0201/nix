@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   fonts = {
     fontDir.enable = true;
     enableDefaultFonts = true;
@@ -11,7 +11,7 @@
     };
 
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = ["FiraCode" "Hack" "Noto"]; })
+      (nerdfonts.override {fonts = ["FiraCode" "Hack" "Noto"];})
       fira-code
       fira-code-symbols
       inconsolata

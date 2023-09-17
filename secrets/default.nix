@@ -1,11 +1,17 @@
-{ config, lib, pkgs, isWSL, ... }:
-  let
-    inherit (lib) makeBinPath;
+{
+  config,
+  lib,
+  pkgs,
+  isWSL,
+  ...
+}: let
+  inherit (lib) makeBinPath;
 
-    yubikey = "age1yubikey1qvm8ruv0vy6e8893q3vx9730yz95uqyxdyaucennynjq0rx44rmhkrexvne";
-    yubikeyIdentity = ./identities/yubikey-identity.pub;
-
-  in if (!isWSL) then {
+  yubikey = "age1yubikey1qvm8ruv0vy6e8893q3vx9730yz95uqyxdyaucennynjq0rx44rmhkrexvne";
+  yubikeyIdentity = ./identities/yubikey-identity.pub;
+in
+  if (!isWSL)
+  then {
     # Rage CLI for encrypting secrets.
     environment.systemPackages = with pkgs; [
       rage
@@ -26,7 +32,8 @@
     age.secrets.sext_ovpn.file = ./sext.ovpn.age;
     age.secrets.sext_creds.file = ./sext-creds.auth.age;
     age.secrets.vale_password.file = ./vale-password.age;
-  } else {
+  }
+  else {
     # WSL does not support USB passthrough in a way that doesn't suck.
     # Using a public key identity exclusively for the user there.
 
