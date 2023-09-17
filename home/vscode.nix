@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [nil alejandra black];
+  home.packages = with pkgs; [nil alejandra black unstable.ruff];
 
   programs.vscode = {
     enable = true;
@@ -35,6 +35,8 @@
       "python.analysis.typeCheckingMode" = "basic";
       "python.testing.pytestEnabled" = true;
       "python.terminal.activateEnvironment" = false;
+      # NOTE: Depends on the `ruff` package.
+      "ruff.path" = ["ruff"];
 
       "nix.enableLanguageServer" = true;
       # NOTE: Depends on the `nil` package.
