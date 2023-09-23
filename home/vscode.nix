@@ -13,6 +13,7 @@
       "editor.fontLigatures" = true;
       "editor.selectionClipboard" = false;
       "files.autoSave" = "afterDelay";
+      "editor.formatOnSave" = true;
       # NOTE: Depends on the `enkia.tokyo-night` extension.
       "workbench.colorTheme" = "Tokyo Night";
       "workbench.startupEditor" = "none";
