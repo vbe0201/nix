@@ -6,7 +6,7 @@ let
 
 in {
   # System-specific 3DS AES keys.
-  "3ds-aes-keys.age".publicKeys = [keys.glacier.host];
+  "3ds-aes-keys.age".publicKeys = userKeys ++ hostKeys;
 
   # OpenVPN network configurations.
   "sext.ovpn.age".publicKeys = userKeys ++ hostKeys;
