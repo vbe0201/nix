@@ -22,26 +22,6 @@
         "type": "github"
       }
     },
-    "agenix-rekey": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1692783612,
-        "narHash": "sha256-Mz1xv45Rjzet1D2bMGKapgw1JCHaD60dBs4sE6Dz2+A=",
-        "owner": "oddlama",
-        "repo": "agenix-rekey",
-        "rev": "52695865488742e0b34a56111cd40e229b3ab90a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oddlama",
-        "repo": "agenix-rekey",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -410,7 +390,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "agenix-rekey": "agenix-rekey",
         "devenv": "devenv",
         "home-manager": "home-manager_2",
         "nix-index-database": "nix-index-database",

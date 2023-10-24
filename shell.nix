@@ -18,7 +18,6 @@ in
 
       gnupg
       rage
-      age-plugin-yubikey
     ];
   };
 }

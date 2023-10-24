@@ -11,7 +11,6 @@
   ## These will be present on every NixOS machine by default.
   coreModules = [
     ../modules/core
-
     ../secrets
 
     inputs.agenix.nixosModules.default
@@ -63,6 +62,7 @@
 
             # Globally install the `vix` automation utility.
             environment.systemPackages = [
+              inputs.agenix.packages.${system}.default
               outputs.packages.${system}.vix
             ];
           }
@@ -84,9 +84,8 @@ in {
       ../modules/hw/nvidia.nix
       ../modules/hw/switch.nix
       ../modules/hw/yubikey.nix
+      ../modules/vpn/mullvad.nix
       ../modules/vpn/sext.nix
-
-      inputs.agenix-rekey.nixosModules.default
     ];
     isWSL = false;
     homeModules = [

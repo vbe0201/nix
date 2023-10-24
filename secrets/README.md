@@ -7,8 +7,8 @@ This setup uses a YubiKey with OpenPGP to decrypt files at system rebuild.
 
 ## Editing a secret
 
-`nix run .#edit-secret <secret>.age`
+`agenix -e <secret>.age`
 
 ## Rekeying the system
 
-`nix run .#rekey`
+`sudo agenix -r -i /etc/ssh/ssh_host_ed25519_key`

@@ -1,19 +1,17 @@
 let
-  yubikey = "age1yubikey1qvm8ruv0vy6e8893q3vx9730yz95uqyxdyaucennynjq0rx44rmhkrexvne";
+  keys = import ../ssh-keys.nix;
 
-  systems = {
-    spectre = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0p+bIcJc2yYukRxv3KCXnlMGsYYnPl2yajBbWgqFVt valentin.be@protonmail.com";
-  };
+  hostKeys = [keys.glacier.host keys.spin.host];
+  userKeys = [keys.glacier.vale keys.spin.vale];
 
-  keysForSystems = sys: bultins.map (s: systems."${s}") sys;
 in {
   # System-specific 3DS AES keys.
-  "3ds-aes-keys.age".publicKeys = [yubikey];
+  "3ds-aes-keys.age".publicKeys = [keys.glacier.host];
 
   # OpenVPN network configurations.
-  "sext.ovpn.age".publicKeys = [yubikey];
-  "sext-creds.auth.age".publicKeys = [yubikey];
+  "sext.ovpn.age".publicKeys = userKeys ++ hostKeys;
+  "sext-creds.auth.age".publicKeys = userKeys ++ hostKeys;
 
   # User account passwords.
-  "vale-password.age".publicKeys = [yubikey] ++ keysForSystems ["spectre"];
+  "vale-password.age".publicKeys = userKeys ++ hostKeys;
 }
