@@ -105,6 +105,34 @@ in {
     ];
   };
 
+  # My notebook for work.
+  spin = makeSystem {
+    system = "x86_64-linux";
+    modules = [
+      ./spin.nix
+
+      ../modules/desktop/kde.nix
+      ../modules/hw/switch.nix
+      ../modules/hw/yubikey.nix
+      ../modules/vpn/sext.nix
+    ];
+    isWSL = false;
+    homeModules = [
+      ../home/x11
+
+      ../home/alacritty.nix
+      ../home/firefox.nix
+      ../home/git.nix
+      ../home/gpg.nix
+      ../home/programs.nix
+      ../home/vscode.nix
+      ../home/xdg.nix
+      ../home/zsh.nix
+
+      inputs.nix-index-database.hmModules.nix-index
+    ];
+  };
+
   # A development-oriented NixOS installation in Windows Subsystem Linux.
   spectre = makeSystem {
     system = "x86_64-linux";
