@@ -7,6 +7,7 @@
       allowed-users = ["@wheel"];
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
+      warn-dirty = false;
     };
 
     # Optimise the Nix store every day at 8pm.
@@ -18,7 +19,7 @@
     # Run garbage collector every Sunday at 9pm.
     gc = {
       automatic = true;
-      dates = "Sun 21:00";
+      dates = "weekly";
       options = "--delete-older-than 7d";
     };
   };

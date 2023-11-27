@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [nil alejandra black unstable.ruff];
+  home.packages = with pkgs; [alejandra];
 
   programs.vscode = {
     enable = true;
@@ -29,27 +29,19 @@
           "source.organizeImports" = true;
         };
       };
-      # NOTE: Depends on the `black` package.
-      "python.formatting.provider" = "black";
       "python.analysis.inlayHints.functionReturnTypes" = true;
       "python.analysis.inlayHints.variableTypes" = true;
       "python.analysis.typeCheckingMode" = "basic";
       "python.testing.pytestEnabled" = true;
       "python.terminal.activateEnvironment" = false;
-      # NOTE: Depends on the `ruff` package.
-      "ruff.path" = ["ruff"];
+      "ruff.path" = ["${pkgs.unstable.ruff}/bin/ruff"];
 
       "nix.enableLanguageServer" = true;
-      # NOTE: Depends on the `nil` package.
-      "nix.serverPath" = "nil";
+      "nix.serverPath" = "${pkgs.nil}/bin/nil";
       "[nix]" = {
         # NOTE: Depends on the `alejandra` package.
         "editor.defaultFormatter" = "kamadorueda.alejandra";
         "editor.formatOnSave" = true;
-      };
-
-      "editor.quickSuggestions" = {
-        "other" = "inline";
       };
     };
 

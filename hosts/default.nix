@@ -25,6 +25,7 @@
 
       extraSpecialArgs = {
         inherit inputs outputs;
+        inherit system;
         inherit isWSL;
       };
 
@@ -78,6 +79,9 @@ in {
     modules = [
       ./glacier.nix
 
+      ../modules/core/docker.nix
+      ../modules/core/sound.nix
+
       ../modules/docker.nix
       ../modules/steam.nix
       ../modules/desktop/kde.nix
@@ -96,7 +100,7 @@ in {
       ../home/gaming.nix
       ../home/git.nix
       ../home/gpg.nix
-      ../home/programs.nix
+      ../home/packages
       ../home/vscode.nix
       ../home/xdg.nix
       ../home/zsh.nix
@@ -111,9 +115,14 @@ in {
     modules = [
       ./spin.nix
 
+      ../modules/core/bluetooth.nix
+      ../modules/core/sound.nix
+
+      ../modules/steam.nix
       ../modules/desktop/kde.nix
       ../modules/hw/switch.nix
       ../modules/hw/yubikey.nix
+      ../modules/vpn/mullvad.nix
       ../modules/vpn/sext.nix
     ];
     isWSL = false;
@@ -124,7 +133,10 @@ in {
       ../home/firefox.nix
       ../home/git.nix
       ../home/gpg.nix
-      ../home/programs.nix
+      ../home/packages/apps.nix
+      ../home/packages/cli.nix
+      ../home/packages/dev.nix
+      ../home/packages/media.nix
       ../home/vscode.nix
       ../home/xdg.nix
       ../home/zsh.nix
