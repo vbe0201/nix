@@ -148,6 +148,7 @@ in {
     system = "x86_64-linux";
     modules = [
       ./spectre.nix
+      ../modules/core/docker.nix
 
       inputs.nixos-wsl.nixosModules.wsl
     ];
