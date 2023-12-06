@@ -6,7 +6,6 @@
     defaultUser = "vale";
     startMenuLaunchers = true;
 
-    docker-native.enable = true;
     docker-desktop.enable = true;
   };
 

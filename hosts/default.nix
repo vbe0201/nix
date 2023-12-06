@@ -11,7 +11,6 @@
   ## These will be present on every NixOS machine by default.
   coreModules = [
     ../modules/core
-    ../secrets
 
     inputs.agenix.nixosModules.default
     inputs.home-manager.nixosModules.default
@@ -69,6 +68,7 @@
           }
         ]
         ++ coreModules
+        ++ (optionals (!isWSL) [../secrets])
         ++ modules
         ++ (optionals (length homeModules != 0) [(makeHome isWSL homeModules system)]);
     };
@@ -82,7 +82,6 @@ in {
       ../modules/core/docker.nix
       ../modules/core/sound.nix
 
-      ../modules/docker.nix
       ../modules/steam.nix
       ../modules/desktop/kde.nix
       ../modules/hw/nvidia.nix
@@ -97,7 +96,6 @@ in {
 
       ../home/alacritty.nix
       ../home/firefox.nix
-      ../home/gaming.nix
       ../home/git.nix
       ../home/gpg.nix
       ../home/packages
@@ -150,6 +148,7 @@ in {
     system = "x86_64-linux";
     modules = [
       ./spectre.nix
+      ../modules/core/docker.nix
 
       inputs.nixos-wsl.nixosModules.wsl
     ];
@@ -157,7 +156,7 @@ in {
     homeModules = [
       ../home/git.nix
       ../home/gpg.nix
-      ../home/programs.nix
+      ../home/packages
       ../home/xdg.nix
       ../home/zsh.nix
 
