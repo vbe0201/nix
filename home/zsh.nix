@@ -14,13 +14,13 @@ in {
 
     enableCompletion = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
 
     autocd = true;
     dotDir = ".config/zsh";
 
     shellAliases = {
-      ls = "exa";
+      ls = "eza";
       cat = "bat";
       diff = "diff --color=auto";
 

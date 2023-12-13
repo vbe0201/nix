@@ -3,7 +3,7 @@
     ark
     atool
     bat
-    exa
+    eza
     fd
     nix-prefetch-docker
     ouch

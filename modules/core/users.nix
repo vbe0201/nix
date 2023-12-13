@@ -10,7 +10,7 @@ in {
   users.users.vale = {
     isNormalUser = true;
     home = "/home/vale";
-    passwordFile = config.age.secrets.vale_password.path;
+    hashedPasswordFile = config.age.secrets.vale_password.path;
 
     extraGroups = [
       "networkmanager"
