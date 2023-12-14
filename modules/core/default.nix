@@ -1,8 +1,4 @@
-{
-  lib,
-  isWSL,
-  ...
-}: {
+_: {
   imports =
     [
       ./fonts.nix
@@ -10,8 +6,6 @@
       ./nix-daemon.nix
       ./users.nix
       ./zsh.nix
-    ]
-    ++ lib.optionals (!isWSL) [
       ./networking.nix
     ];
 }

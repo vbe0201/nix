@@ -11,13 +11,14 @@
   ## These will be present on every NixOS machine by default.
   coreModules = [
     ../modules/core
+    ../secrets
 
     inputs.agenix.nixosModules.default
     inputs.home-manager.nixosModules.default
   ];
 
   ## Defines a home-manager module for the `vale` user.
-  makeHome = isWSL: modules: system: {
+  makeHome = modules: system: {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
@@ -25,7 +26,6 @@
       extraSpecialArgs = {
         inherit inputs outputs;
         inherit system;
-        inherit isWSL;
       };
 
       users.vale = {...}: {
@@ -39,12 +39,11 @@
   makeSystem = {
     system,
     modules,
-    isWSL,
     homeModules ? [],
   }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = inputs // {inherit system isWSL;};
+      specialArgs = inputs // {inherit system;};
       modules =
         [
           {
@@ -68,9 +67,8 @@
           }
         ]
         ++ coreModules
-        ++ (optionals (!isWSL) [../secrets])
         ++ modules
-        ++ (optionals (length homeModules != 0) [(makeHome isWSL homeModules system)]);
+        ++ (optionals (length homeModules != 0) [(makeHome homeModules system)]);
     };
 in {
   # My main desktop machine and daily driver.
@@ -90,7 +88,6 @@ in {
       ../modules/vpn/mullvad.nix
       ../modules/vpn/sext.nix
     ];
-    isWSL = false;
     homeModules = [
       ../home/x11
 
@@ -123,7 +120,6 @@ in {
       ../modules/vpn/mullvad.nix
       ../modules/vpn/sext.nix
     ];
-    isWSL = false;
     homeModules = [
       ../home/x11
 

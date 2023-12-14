@@ -1,6 +1,5 @@
 {
   pkgs,
-  isWSL,
   ...
 }: {
   programs.git = {
@@ -11,10 +10,7 @@
     userEmail = "valentin.be@protonmail.com";
 
     signing = {
-      key =
-        if isWSL
-        then "7705337EDFD49C2F"
-        else "86E925845C0F9279";
+      key = "86E925845C0F9279";
       signByDefault = true;
     };
 
