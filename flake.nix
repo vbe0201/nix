@@ -64,6 +64,9 @@
     overlays = import ./overlays {inherit inputs;};
 
     # Entrypoint to all NixOS systems this config defines.
-    nixosConfigurations = import ./hosts {inherit inputs outputs;};
+    nixosConfigurations = import ./hosts {
+      inherit inputs outputs;
+      revision = self.rev or "dirty";
+    };
   };
 }
