@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  revision,
   ...
 }: let
   inherit (builtins) length;
@@ -65,6 +66,8 @@
               inputs.agenix.packages.${system}.default
               outputs.packages.${system}.vix
             ];
+
+            system.configurationRevision = revision;
           }
         ]
         ++ coreModules
