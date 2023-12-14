@@ -142,25 +142,4 @@ in {
       inputs.nix-index-database.hmModules.nix-index
     ];
   };
-
-  # A development-oriented NixOS installation in Windows Subsystem Linux.
-  spectre = makeSystem {
-    system = "x86_64-linux";
-    modules = [
-      ./spectre.nix
-      ../modules/core/docker.nix
-
-      inputs.nixos-wsl.nixosModules.wsl
-    ];
-    isWSL = true;
-    homeModules = [
-      ../home/git.nix
-      ../home/gpg.nix
-      ../home/packages
-      ../home/xdg.nix
-      ../home/zsh.nix
-
-      inputs.nix-index-database.hmModules.nix-index
-    ];
-  };
 }
