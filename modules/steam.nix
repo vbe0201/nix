@@ -7,6 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     protontricks
+    wineWowPackages.unstable
     lutris
   ];
 }
