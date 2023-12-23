@@ -43,6 +43,10 @@
         "editor.defaultFormatter" = "kamadorueda.alejandra";
         "editor.formatOnSave" = true;
       };
+
+      "zig.zigPath" = "";
+      "zig.zls.path" = "${pkgs.unstable.zls}/bin/zls";
+      "zig.zls.checkForUpdates" = false;
     };
 
     extensions = with pkgs.unstable.vscode-extensions; [
@@ -55,6 +59,7 @@
       matklad.rust-analyzer
       ms-python.python
       charliermarsh.ruff
+      ziglang.vscode-zig
     ];
   };
 }

@@ -11,5 +11,6 @@
     keepassxc
     obs-studio
     wireshark
+    zoom-us
   ];
 }
