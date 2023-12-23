@@ -44,7 +44,7 @@
         "editor.formatOnSave" = true;
       };
 
-      "zig.zigPath" = "";
+      "zig.path" = "";
       "zig.zls.path" = "${pkgs.unstable.zls}/bin/zls";
       "zig.zls.checkForUpdates" = false;
     };
