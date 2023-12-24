@@ -29,9 +29,6 @@
           "source.organizeImports" = true;
         };
       };
-      "python.analysis.inlayHints.functionReturnTypes" = true;
-      "python.analysis.inlayHints.variableTypes" = true;
-      "python.analysis.typeCheckingMode" = "basic";
       "python.testing.pytestEnabled" = true;
       "python.terminal.activateEnvironment" = false;
       "ruff.path" = ["${pkgs.unstable.ruff}/bin/ruff"];
@@ -47,6 +44,8 @@
       "zig.path" = "";
       "zig.zls.path" = "${pkgs.unstable.zls}/bin/zls";
       "zig.initialSetupDone" = true;
+      "zig.checkForUpdate" = false;
+      "zig.zls.enableAutofix" = true;
     };
 
     extensions = with pkgs.unstable.vscode-extensions; [
