@@ -45,7 +45,7 @@
       "zig.zls.path" = "${pkgs.unstable.zls}/bin/zls";
       "zig.initialSetupDone" = true;
       "zig.checkForUpdate" = false;
-      "zig.zls.enableAutofix" = true;
+      "zig.zls.enableAutofix" = false;
     };
 
     extensions = with pkgs.unstable.vscode-extensions; [
