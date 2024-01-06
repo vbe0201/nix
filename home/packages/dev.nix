@@ -18,6 +18,8 @@ in {
   home.packages = with pkgs;
     [
       devenv.packages."${system}".devenv
+      gcc
+      gdb
       rustup
       sccache
     ]
