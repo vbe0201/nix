@@ -1,9 +1,7 @@
 {
   inputs,
-  lib,
   pkgs,
   system,
-  isWSL,
   ...
 }: let
   inherit (inputs) devenv;
@@ -22,8 +20,6 @@ in {
       gdb
       rustup
       sccache
-    ]
-    ++ lib.optionals (!isWSL) [
       python311
       unstable.jetbrains.clion
       unstable.jetbrains.rider
