@@ -1,13 +1,9 @@
 {
-  inputs,
   lib,
   pkgs,
-  system,
   isWSL,
   ...
-}: let
-  inherit (inputs) devenv;
-in {
+}: {
   # rustup and cargo install binaries to this path.
   home.sessionPath = ["$HOME/.cargo/bin"];
 
@@ -17,7 +13,6 @@ in {
 
   home.packages = with pkgs;
     [
-      devenv.packages."${system}".devenv
       gcc
       gdb
       rustup

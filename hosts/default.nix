@@ -138,6 +138,7 @@ in {
       ../home/packages/cli.nix
       ../home/packages/dev.nix
       ../home/packages/media.nix
+      ../home/packages/spin.nix
       ../home/vscode.nix
       ../home/xdg.nix
       ../home/zsh.nix

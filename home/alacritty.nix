@@ -21,7 +21,7 @@ in {
 
   programs.alacritty = {
     enable = true;
-    package = pkgs.unstable.alacritty;
+    package = pkgs.alacritty;
 
     settings = {
       env.term = "xterm-256color";

@@ -36,6 +36,11 @@
 
   hardware.cpu.amd.updateMicrocode = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/42993a77-a622-4198-8798-7edf43e59107";
     fsType = "ext4";

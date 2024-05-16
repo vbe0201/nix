@@ -25,8 +25,8 @@
       "[python]" = {
         "editor.formatOnSave" = true;
         "editor.codeActionsOnSave" = {
-          "source.fixAll" = true;
-          "source.organizeImports" = true;
+          "source.fixAll" = "explicit";
+          "source.organizeImports" = "explicit";
         };
       };
       "python.testing.pytestEnabled" = true;
