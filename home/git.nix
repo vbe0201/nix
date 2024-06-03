@@ -14,7 +14,7 @@
       key =
         if isWSL
         then "7705337EDFD49C2F"
-        else "86E925845C0F9279";
+        else "AB0A082D7A817911";
       signByDefault = true;
     };
 

@@ -7,7 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     protontricks
-    unstable.wineWowPackages.unstable
+    unstable.wineWowPackages.unstableFull
     lutris
   ];
 }

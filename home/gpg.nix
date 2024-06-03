@@ -3,8 +3,8 @@
     enable = true;
 
     settings = {
-      default-key = "0x0ADE9C5EE5A17908";
-      trusted-key = "0x0ADE9C5EE5A17908";
+      default-key = "0xB5875C2FA3770584";
+      trusted-key = "0xB5875C2FA3770584";
 
       no-greeting = true;
       throw-keyids = true;
