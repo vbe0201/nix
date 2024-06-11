@@ -55,7 +55,7 @@
       kamadorueda.alejandra
       mkhl.direnv
       tamasfe.even-better-toml
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
       ms-python.python
       charliermarsh.ruff
       ziglang.vscode-zig

@@ -82,6 +82,7 @@ in {
     modules = [
       ./glacier.nix
 
+      ../modules/core/bluetooth.nix
       ../modules/core/docker.nix
       ../modules/core/sound.nix
 
@@ -95,7 +96,7 @@ in {
     ];
     isWSL = false;
     homeModules = [
-      ../home/x11
+      ../home/wayland
 
       ../home/alacritty.nix
       ../home/firefox.nix
@@ -128,7 +129,7 @@ in {
     ];
     isWSL = false;
     homeModules = [
-      ../home/x11
+      ../home/wayland
 
       ../home/alacritty.nix
       ../home/firefox.nix

@@ -77,14 +77,9 @@ in {
           x = 0;
           y = 0;
         };
-
-        scale_with_dpi = true;
       };
 
-      draw_bold_text_with_bright_colors = true;
-
       debug = {
-        render_time = false;
         persistent_logging = false;
       };
 
@@ -127,6 +122,8 @@ in {
             color = "0xdb4b4b";
           }
         ];
+
+        draw_bold_text_with_bright_colors = true;
       };
 
       bell = {
@@ -134,26 +131,12 @@ in {
         duration = 0;
       };
 
-      mouse = {
-        double_click.threshold = 300;
-        triple_click.threshold = 300;
-
-        faux_scrolling_lines = 1;
-
-        hide_when_typing = false;
-
-        hints = {
-          launcher = "firefox";
-          modifiers = "Control";
-        };
-      };
-
       selection = {
         semantic_escape_chars = ",│`|:\"' ()[]{}<>";
         save_to_clipboard = true;
       };
 
-      mouse_bindings = [
+      mouse.bindings = [
         {
           mouse = "Middle";
           action = "PasteSelection";
@@ -170,7 +153,7 @@ in {
 
       live_config_reload = true;
 
-      key_bindings = [
+      keyboard.bindings = [
         (bindKey "PageUp" "Shift" "ScrollPageUp" "~Alt")
         (bindKey "PageDown" "Shift" "ScrollPageDown" "~Alt")
         (bindKey "Home" "Shift" "ScrollToTop" "~Alt")

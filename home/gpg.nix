@@ -28,15 +28,12 @@
     paperkey
     pgpdump
     cryptsetup
-
-    # Securely accept passphrases.
-    pinentry-qt
   ];
 
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
     enableZshIntegration = true;
-    pinentryFlavor = "qt";
+    pinentryPackage = pkgs.pinentry-qt;
   };
 }
