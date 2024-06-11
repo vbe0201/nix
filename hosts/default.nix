@@ -96,8 +96,6 @@ in {
     ];
     isWSL = false;
     homeModules = [
-      ../home/wayland
-
       ../home/alacritty.nix
       ../home/firefox.nix
       ../home/git.nix
