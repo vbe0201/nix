@@ -91,11 +91,12 @@ in {
       ../modules/hw/nvidia.nix
       ../modules/hw/switch.nix
       ../modules/hw/yubikey.nix
-      ../modules/vpn/mullvad.nix
       ../modules/vpn/sext.nix
     ];
     isWSL = false;
     homeModules = [
+      ../home/wayland
+
       ../home/alacritty.nix
       ../home/firefox.nix
       ../home/git.nix
@@ -122,7 +123,6 @@ in {
       ../modules/desktop/kde.nix
       ../modules/hw/switch.nix
       ../modules/hw/yubikey.nix
-      ../modules/vpn/mullvad.nix
       ../modules/vpn/sext.nix
     ];
     isWSL = false;

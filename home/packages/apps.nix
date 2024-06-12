@@ -10,6 +10,11 @@
     gimp
     keepassxc
     obs-studio
+    thunderbird
+    unstable.proton-pass
+    unstable.protonmail-bridge-gui
+    unstable.protonvpn-gui
+    v4l-utils
     wireshark
     zoom-us
   ];
