@@ -98,7 +98,7 @@ in {
       ../home/wayland
 
       ../home/alacritty.nix
-      ../home/firefox.nix
+      ../home/chromium.nix
       ../home/git.nix
       ../home/gpg.nix
       ../home/packages

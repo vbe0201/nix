@@ -22,5 +22,6 @@
       python311
       unstable.jetbrains.clion
       unstable.jetbrains.rider
+      unstable.zed-editor
     ];
 }
