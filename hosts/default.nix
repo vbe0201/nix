@@ -15,6 +15,7 @@
 
     inputs.agenix.nixosModules.default
     inputs.home-manager.nixosModules.default
+    inputs.lix-module.nixosModules.default
   ];
 
   ## Defines a home-manager module for the `vale` user.
@@ -61,7 +62,8 @@
               config.allowUnfree = true;
             };
 
-            # Globally install the `vix` automation utility.
+            home-manager.backupFileExtension = "bak";
+
             environment.systemPackages = [
               inputs.agenix.packages.${system}.default
               outputs.packages.${system}.vix
@@ -98,12 +100,13 @@ in {
       ../home/wayland
 
       ../home/alacritty.nix
-      ../home/chromium.nix
+      ../home/firefox.nix
       ../home/git.nix
       ../home/gpg.nix
       ../home/packages
       ../home/vscode.nix
       ../home/xdg.nix
+      ../home/zed.nix
       ../home/zsh.nix
 
       inputs.nix-index-database.hmModules.nix-index
@@ -140,6 +143,7 @@ in {
       ../home/packages/spin.nix
       ../home/vscode.nix
       ../home/xdg.nix
+      ../home/zed.nix
       ../home/zsh.nix
 
       inputs.nix-index-database.hmModules.nix-index

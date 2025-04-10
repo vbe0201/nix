@@ -1,4 +1,5 @@
 {
+  config,
   modulesPath,
   pkgs,
   ...
@@ -10,7 +11,8 @@
   boot = {
     tmp = {
       useTmpfs = true;
-      tmpfsSize = "75%";
+      tmpfsSize = "95%";
+      cleanOnBoot = true;
     };
 
     initrd.availableKernelModules = [
@@ -23,13 +25,15 @@
     ];
     initrd.kernelModules = [];
 
-    kernelModules = ["kvm-amd" "v4l2loopback"];
-    extraModulePackages = [pkgs.linuxPackages.v4l2loopback];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
 
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
     supportedFilesystems = ["ntfs"];
+
+    kernelPackages = pkgs.unstable.linuxPackages_latest;
   };
 
   hardware.cpu.amd.updateMicrocode = true;

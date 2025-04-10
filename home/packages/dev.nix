@@ -21,7 +21,7 @@
     ++ lib.optionals (!isWSL) [
       python311
       unstable.jetbrains.clion
+      unstable.jetbrains.idea-ultimate
       unstable.jetbrains.rider
-      unstable.zed-editor
     ];
 }

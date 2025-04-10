@@ -151,7 +151,7 @@ in {
         unfocused_hollow = true;
       };
 
-      live_config_reload = true;
+      general.live_config_reload = true;
 
       keyboard.bindings = [
         (bindKey "PageUp" "Shift" "ScrollPageUp" "~Alt")

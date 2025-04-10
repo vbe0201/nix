@@ -25,16 +25,17 @@
 
   # Hardware configuration for NVIDIA GPUs.
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
 
       extraPackages = with pkgs; [nvidia-vaapi-driver];
     };
 
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      open = false;
+      nvidiaSettings = true;
       modesetting.enable = true;
     };
   };
