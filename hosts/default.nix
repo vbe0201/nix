@@ -64,6 +64,8 @@
 
             home-manager.backupFileExtension = "bak";
 
+            programs.nix-ld.enable = true;
+
             environment.systemPackages = [
               inputs.agenix.packages.${system}.default
               outputs.packages.${system}.vix

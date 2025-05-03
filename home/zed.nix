@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: {
+{...}: {
   programs.zed-editor = {
     enable = true;
 
@@ -33,12 +33,51 @@
       };
 
       lsp = {
-        rust-analyzer = {
-          binary.path = lib.getExe pkgs.rust-analyzer;
+        clangd = {
+          binary = {
+            path_lookup = true;
+            arguments = [
+              "--clang-tidy"
+              "--background-index"
+              "--header-insertion=iwyu"
+              "--completion-style=detailed"
+              "--enable-config"
+            ];
+          };
         };
+
+        rust-analyzer = {
+          initialization_options = {
+            cargo = {
+              allFeatures = true;
+              buildScripts.rebuildOnSave = true;
+            };
+          };
+          procMacro.enable = true;
+          checkOnSave.command = "clippy";
+          hover.references.enabled = true;
+          imports = {
+            prefix = "crate";
+            preferPrelude = true;
+            granularity.enforce = true;
+          };
+          inlayHints = {
+            lifetimeElisionHints = {
+              useParameterNames = true;
+              enable = "skip_trivial";
+            };
+          };
+          binary.path_lookup = true;
+        };
+
         nix = {
           binary.path_lookup = true;
         };
+      };
+
+      telemetry = {
+        diagnostics = false;
+        metrics = false;
       };
 
       load_direnv = "shell_hook";
