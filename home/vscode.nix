@@ -57,6 +57,8 @@
       tamasfe.even-better-toml
       rust-lang.rust-analyzer
       ms-python.python
+      ms-vscode-remote.remote-ssh
+      ms-vscode-remote.remote-ssh-edit
       charliermarsh.ruff
       ziglang.vscode-zig
     ];
