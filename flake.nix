@@ -2,16 +2,11 @@
   description = "Personal NixOS configurations";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
+    nixpkgs.url = "nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -20,20 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
 
   outputs = {
@@ -47,13 +34,11 @@
       "x86_64-linux"
     ];
 
-    forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
+    forEachPkgs = f: forEachSystem (system: f nixpkgs.legacyPackages.${system});
   in {
     # Define custom packages for the system.
     packages = forEachPkgs (
-      pkgs:
-        (import ./pkgs {inherit pkgs;})
-        // (import ./vix {inherit pkgs;})
+      pkgs: (import ./pkgs {inherit pkgs;})
     );
 
     # A development shell for bootstrapping the flake

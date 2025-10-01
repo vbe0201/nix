@@ -42,6 +42,8 @@ These are links kept here because I regularly forget about them.
 
 - [Nix Pills](https://nixos.org/guides/nix-pills/)
 
+- [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/)
+
 ### WSL
 
 - [Visual Studio Code remote connections to WSL](https://github.com/sonowz/vscode-remote-wsl-nixos)

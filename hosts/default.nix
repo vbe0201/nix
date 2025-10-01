@@ -4,151 +4,59 @@
   revision,
   ...
 }: let
-  inherit (builtins) length;
-  inherit (inputs.nixpkgs.lib) optionals;
-  inherit (outputs) overlays;
-
-  ## Core modules which are crucial for every system go here.
-  ## These will be present on every NixOS machine by default.
-  coreModules = [
-    ../modules/core
-
-    inputs.agenix.nixosModules.default
-    inputs.home-manager.nixosModules.default
-    inputs.lix-module.nixosModules.default
-  ];
-
-  ## Defines a home-manager module for the `vale` user.
-  makeHome = isWSL: modules: system: {
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-
-      extraSpecialArgs = {
-        inherit inputs outputs;
-        inherit system;
-        inherit isWSL;
-      };
-
-      users.vale = {...}: {
-        imports = modules;
-        home.stateVersion = "22.11";
-      };
-    };
-  };
-
   ## Defines a new NixOS system.
-  makeSystem = {
-    system,
-    modules,
-    isWSL,
-    homeModules ? [],
-  }:
+  ##
+  ## - `system` is the platform NixOS is running on.
+  ## - `modules` is a list of extra attribute sets with host-exclusive
+  ##   configuration. For example, the desired modules from the `mine`
+  ##   namespace should be set up from there.
+  mkNixosSystem = configPath: let
+    config = import configPath;
+    system = config.system;
+  in
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = inputs // {inherit system isWSL;};
+      specialArgs = {inherit inputs outputs system;};
+
       modules =
         [
+          ../modules
+          ../secrets
+
+          inputs.agenix.nixosModules.default
+          inputs.catppuccin.nixosModules.catppuccin
+          inputs.home-manager.nixosModules.default
+
           {
-            # Globally configure nixpkgs so that we can get unfree
-            # packages on both stable and unstable channels.
-            nixpkgs = {
-              hostPlatform = system;
-              overlays = [
-                inputs.rust-overlay.overlays.default
-
-                overlays.unstable-unfree-packages
-              ];
-              config.allowUnfree = true;
-            };
-
-            home-manager.backupFileExtension = "bak";
-
-            programs.nix-ld.enable = true;
+            system.configurationRevision = revision;
 
             environment.systemPackages = [
               inputs.agenix.packages.${system}.default
-              outputs.packages.${system}.vix
             ];
 
-            system.configurationRevision = revision;
+            home-manager = {
+              backupFileExtension = "bak";
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              extraSpecialArgs = {
+                inherit inputs outputs system;
+              };
+
+              users.vale = {...}: {
+                imports =
+                  [
+                    ../home
+                  ]
+                  ++ config.home.modules;
+              };
+            };
           }
         ]
-        ++ coreModules
-        ++ (optionals (!isWSL) [../secrets])
-        ++ modules
-        ++ (optionals (length homeModules != 0) [(makeHome isWSL homeModules system)]);
+        ++ config.modules;
     };
 in {
-  # My main desktop machine and daily driver.
-  glacier = makeSystem {
-    system = "x86_64-linux";
-    modules = [
-      ./glacier.nix
+  glacier = mkNixosSystem ./glacier;
 
-      ../modules/core/bluetooth.nix
-      ../modules/core/docker.nix
-      ../modules/core/sound.nix
-
-      ../modules/steam.nix
-      ../modules/desktop/kde.nix
-      ../modules/hw/nvidia.nix
-      ../modules/hw/switch.nix
-      ../modules/hw/yubikey.nix
-      ../modules/vpn/sext.nix
-    ];
-    isWSL = false;
-    homeModules = [
-      ../home/wayland
-
-      ../home/alacritty.nix
-      ../home/firefox.nix
-      ../home/git.nix
-      ../home/gpg.nix
-      ../home/packages
-      ../home/vscode.nix
-      ../home/xdg.nix
-      ../home/zed.nix
-      ../home/zsh.nix
-
-      inputs.nix-index-database.hmModules.nix-index
-    ];
-  };
-
-  # My notebook for work.
-  spin = makeSystem {
-    system = "x86_64-linux";
-    modules = [
-      ./spin.nix
-
-      ../modules/core/bluetooth.nix
-      ../modules/core/sound.nix
-
-      ../modules/steam.nix
-      ../modules/desktop/kde.nix
-      ../modules/hw/switch.nix
-      ../modules/hw/yubikey.nix
-      ../modules/vpn/sext.nix
-    ];
-    isWSL = false;
-    homeModules = [
-      ../home/wayland
-
-      ../home/alacritty.nix
-      ../home/firefox.nix
-      ../home/git.nix
-      ../home/gpg.nix
-      ../home/packages/apps.nix
-      ../home/packages/cli.nix
-      ../home/packages/dev.nix
-      ../home/packages/media.nix
-      ../home/packages/spin.nix
-      ../home/vscode.nix
-      ../home/xdg.nix
-      ../home/zed.nix
-      ../home/zsh.nix
-
-      inputs.nix-index-database.hmModules.nix-index
-    ];
-  };
+  spin = mkNixosSystem ./spin;
 }
