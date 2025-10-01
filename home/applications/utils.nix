@@ -50,6 +50,7 @@ with lib; {
       asciinema
       fastfetch
       ffmpeg
+      flameshot
     ];
   };
 }
