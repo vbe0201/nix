@@ -26,7 +26,7 @@ with lib; {
   catppuccin = {
     enable = true;
     accent = mkDefault "red";
-    flavor = mkDefault "macchiato";
+    flavor = mkDefault "mocha";
   };
 
   programs.home-manager.enable = true;
