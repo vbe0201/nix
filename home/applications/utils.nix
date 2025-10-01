@@ -51,6 +51,8 @@ with lib; {
       fastfetch
       ffmpeg
       flameshot
+      unzip
+      unrar
     ];
   };
 }
