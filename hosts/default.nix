@@ -35,7 +35,7 @@
             ];
 
             home-manager = {
-              backupFileExtension = "bak";
+              backupFileExtension = "backup";
               useGlobalPkgs = true;
               useUserPackages = true;
 
