@@ -18,11 +18,7 @@ with lib; {
     environment.systemPackages = with pkgs; [
       protonup-qt
       unstable.wineWowPackages.unstableFull
-      (lutris.override {
-        extraLibraries = pkgs: [
-          protobuf
-        ];
-      })
+      lutris
       bottles
       heroic
     ];
