@@ -39,10 +39,7 @@ with lib; {
           vulkan-loader
           vulkan-validation-layers
           vulkan-extension-layer
-
-          rocmPackages.clr
           nvidia-vaapi-driver
-          libvdpau-va-gl
         ];
       };
 
