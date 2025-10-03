@@ -10,8 +10,10 @@ with lib; {
   };
 
   config = mkIf config.mine.hardware.nvidiaGpu.enable {
-    # Make sure nouveau never runs alongside the official driver.
-    boot.blacklistedKernelModules = ["nouveau"];
+    boot = {
+      initrd.kernelModules = ["nvidia"];
+      blacklistedKernelModules = ["nouveau"];
+    };
 
     # Configure the video driver to use on Wayland and X11.
     services.xserver.videoDrivers = ["nvidia"];
