@@ -20,8 +20,6 @@ with lib; {
 
     # Enable Vulkan support.
     environment.systemPackages = with pkgs; [
-      vulkan-loader
-      vulkan-validation-layers
       vulkan-tools
     ];
 
@@ -38,6 +36,10 @@ with lib; {
         enable = true;
         enable32Bit = true;
         extraPackages = with pkgs; [
+          vulkan-loader
+          vulkan-validation-layers
+          vulkan-extension-layer
+
           rocmPackages.clr
           nvidia-vaapi-driver
           libvdpau-va-gl
