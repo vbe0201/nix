@@ -25,6 +25,7 @@ with lib; {
 
     # Recommended environment variables.
     environment.sessionVariables = {
+      VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.x86_64.json";
       LIBVA_DRIVER_NAME = "nvidia";
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
@@ -35,7 +36,11 @@ with lib; {
       graphics = {
         enable = true;
         enable32Bit = true;
-        extraPackages = with pkgs; [nvidia-vaapi-driver];
+        extraPackages = with pkgs; [
+          rocmPackages.clr
+          nvidia-vaapi-driver
+          libvdpau-va-gl
+        ];
       };
 
       nvidia = {
