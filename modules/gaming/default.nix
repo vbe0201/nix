@@ -12,6 +12,8 @@ with lib; {
   config = mkIf config.mine.gaming.enable {
     programs.steam = {
       enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
       protontricks.enable = true;
     };
 
