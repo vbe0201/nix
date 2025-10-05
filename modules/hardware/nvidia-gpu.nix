@@ -44,7 +44,7 @@ with lib; {
       };
 
       nvidia = {
-        package = mkDefault config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+        package = mkDefault config.boot.kernelPackages.nvidiaPackages.latest;
         open = false;
         nvidiaSettings = true;
         modesetting.enable = true;
