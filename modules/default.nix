@@ -8,6 +8,7 @@ in {
   imports = [
     ./desktop
     ./docker
+    ./flatpak
     ./gaming
     ./hardware
     ./locale

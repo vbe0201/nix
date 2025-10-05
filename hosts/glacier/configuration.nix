@@ -73,6 +73,8 @@
 
     docker.enable = true;
 
+    flatpak.enable = true;
+
     gaming.enable = true;
 
     hardware = {

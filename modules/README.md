@@ -19,6 +19,10 @@ This setup is universal and shared between all supported desktops:
 
 `mine.docker.enable` sets up virtualisation and rootless Docker.
 
+### `flatpak`
+
+`mine.flatpak.enable` enables the flatpak service.
+
 ### `gaming`
 
 `mine.gaming.enable` provides Steam, Wine, Lutris, Bottles and
