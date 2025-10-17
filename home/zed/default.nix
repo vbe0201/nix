@@ -23,6 +23,17 @@ with lib; {
         auto_update = false;
         hour_format = "hour24";
 
+        buffer_font_family = "JuliaMono";
+        buffer_font_size = 15;
+        ui_font_family = "JuliaMono";
+        ui_font_size = 15;
+
+        autosave = {
+          after_delay = {
+            milliseconds = 1000;
+          };
+        };
+
         terminal = {
           alternate_scroll = "off";
           blinking = "off";
@@ -90,9 +101,6 @@ with lib; {
 
         load_direnv = "shell_hook";
         base_keymap = "VSCode";
-
-        ui_font_size = 15;
-        buffer_font_size = 15;
       };
     };
   };
