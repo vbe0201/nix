@@ -36,7 +36,7 @@ with lib; {
             };
           };
 
-          font_family = "JuliaMono-Regular";
+          font_family = "JuliaMono";
           font_features = null;
           font_size = null;
           line_height = "comfortable";

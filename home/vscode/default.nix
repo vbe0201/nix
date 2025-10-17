@@ -19,7 +19,7 @@ with lib; {
 
         userSettings = {
           "editor.fontSize" = 15;
-          "editor.fontFamily" = "'JuliaMono-Regular', 'Droid Sans Mono', 'monospace'";
+          "editor.fontFamily" = "'JuliaMono', 'Droid Sans Mono', 'monospace'";
           "editor.fontLigatures" = true;
           "editor.selectionClipboard" = false;
           "files.autoSave" = "afterDelay";
