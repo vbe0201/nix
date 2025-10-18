@@ -33,6 +33,7 @@ with lib; {
             milliseconds = 1000;
           };
         };
+        remove_trailing_whitespace_on_save = true;
 
         terminal = {
           alternate_scroll = "off";
