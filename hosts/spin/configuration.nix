@@ -19,16 +19,25 @@
       cleanOnBoot = true;
     };
 
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "thunderbolt"
-      "vmd"
-      "nvme"
-      "usbhid"
-      "usb_storage"
-      "sd_mod"
-    ];
-    initrd.kernelModules = [];
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "vmd"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [];
+
+      systemd.enable = true;
+
+      #luks.devices."root" = {
+      #  device = "/dev/disk/by-uuid/960337f3-b8d2-4e27-a316-5e8c20b88c6b";
+      #  allowDiscards = true;
+      #};
+    };
 
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
@@ -45,10 +54,12 @@
     "/" = {
       device = "/dev/disk/by-uuid/960337f3-b8d2-4e27-a316-5e8c20b88c6b";
       fsType = "ext4";
+      options = ["noatime"];
     };
     "/boot" = {
       device = "/dev/disk/by-uuid/F1B0-72F4";
       fsType = "vfat";
+      options = ["noatime"];
     };
   };
 

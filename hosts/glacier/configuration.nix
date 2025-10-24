@@ -1,7 +1,6 @@
 {
   config,
   modulesPath,
-  pkgs,
   ...
 }: {
   imports = [
@@ -44,14 +43,17 @@
     "/" = {
       device = "/dev/disk/by-uuid/42993a77-a622-4198-8798-7edf43e59107";
       fsType = "ext4";
+      options = ["noatime"];
     };
     "/boot" = {
       device = "/dev/disk/by-uuid/CC89-57F0";
       fsType = "vfat";
+      options = ["noatime"];
     };
     "/home" = {
       device = "/dev/disk/by-uuid/1a57178b-56c7-4227-ac75-0af59a26671f";
       fsType = "ext4";
+      options = ["noatime"];
     };
   };
 

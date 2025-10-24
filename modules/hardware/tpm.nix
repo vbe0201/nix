@@ -30,6 +30,10 @@ with lib; {
         tpm2-tss
         tpm2-abrmd
       ];
+
+      environment.sessionVariables = {
+        TPM2TOOLS_TCTI = "device:/dev/tpmrm0";
+      };
     }
   );
 }
