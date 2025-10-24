@@ -10,6 +10,7 @@ with lib; {
 
   config = mkIf config.mine.openvpn.sext.enable {
     services.openvpn.servers.sext = {
+      autoStart = false;
       config = ''
         config ${config.age.secrets.sext_ovpn.path}
         auth-user-pass ${config.age.secrets.sext_creds.path}
