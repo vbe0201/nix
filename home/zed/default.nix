@@ -18,7 +18,6 @@ with lib; {
       enable = true;
 
       userSettings = {
-        assistant.disabled = false;
         disable_ai = true;
         auto_update = false;
         hour_format = "hour24";
