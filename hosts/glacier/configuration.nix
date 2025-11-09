@@ -97,11 +97,6 @@
 
     nix.nix-ld.enable = true;
 
-    openrgb = {
-      service.enable = true;
-      program.enable = true;
-    };
-
     openvpn.sext.enable = true;
 
     yubikey.enable = true;

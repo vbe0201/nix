@@ -11,7 +11,7 @@ with lib; {
 
   config = mkIf config.mine.apps.games.enable {
     home.packages = with pkgs; [
-      dolphin-emu
+      unstable.dolphin-emu
       melonDS
       duckstation
       mame
