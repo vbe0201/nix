@@ -44,7 +44,7 @@ with lib; {
       };
 
       nvidia = {
-        package = mkDefault config.boot.kernelPackages.nvidiaPackages.latest;
+        package = mkDefault config.boot.kernelPackages.nvidiaPackages.stable;
         open = false;
         nvidiaSettings = true;
         modesetting.enable = true;
