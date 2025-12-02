@@ -34,8 +34,6 @@ with lib; {
           "chat.disableAIFeatures" = true;
           "chat.commandCenter.enabled" = false;
 
-          "github.copilot.enable" = false;
-
           "rust-analyzer.check.command" = "clippy";
           "rust-analyzer.inlayHints.lifetimeElisionHints.enable" = "skip_trivial";
 
@@ -49,6 +47,9 @@ with lib; {
           "python.testing.pytestEnabled" = true;
           "python.terminal.activateEnvironment" = false;
           "ruff.path" = ["${pkgs.unstable.ruff}/bin/ruff"];
+
+          "C_Cpp.intelliSenseEngine" = "disabled";
+          "C_Cpp.clang_format_fallbackStyle" = "none";
 
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "${pkgs.nil}/bin/nil";
@@ -66,6 +67,8 @@ with lib; {
           tamasfe.even-better-toml
           rust-lang.rust-analyzer
           ms-python.python
+          ms-vscode.cpptools
+          llvm-vs-code-extensions.vscode-clangd
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit
           charliermarsh.ruff
