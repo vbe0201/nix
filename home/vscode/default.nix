@@ -46,7 +46,6 @@ with lib; {
           };
           "python.testing.pytestEnabled" = true;
           "python.terminal.activateEnvironment" = false;
-          "ruff.path" = ["${pkgs.unstable.ruff}/bin/ruff"];
 
           "C_Cpp.intelliSenseEngine" = "disabled";
           "C_Cpp.clang_format_fallbackStyle" = "none";
@@ -71,7 +70,6 @@ with lib; {
           llvm-vs-code-extensions.vscode-clangd
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit
-          charliermarsh.ruff
         ];
       };
     };
