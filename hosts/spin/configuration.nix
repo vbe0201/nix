@@ -92,6 +92,8 @@
       kde.enable = true;
     };
 
+    docker.enable = true;
+
     hardware = {
       tpm.enable = true;
       udev = {
