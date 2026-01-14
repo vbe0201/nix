@@ -44,8 +44,18 @@ with lib; {
               "source.organizeImports" = "explicit";
             };
           };
+          "python.analysis.inlayHints.functionReturnTypes" = true;
+          "python.analysis.inlayHints.variableTypes" = true;
+          "python.analysis.inlayHints.pytestParameters" = true;
+          "python.analysis.typeCheckingMode" = "basic";
           "python.testing.pytestEnabled" = true;
           "python.terminal.activateEnvironment" = false;
+          "python.analysis.exclude" = [
+            "result"
+            ".direnv"
+            ".venv"
+            "venv"
+          ];
 
           "C_Cpp.intelliSenseEngine" = "disabled";
           "C_Cpp.clang_format_fallbackStyle" = "none";
@@ -56,6 +66,8 @@ with lib; {
             "editor.defaultFormatter" = "kamadorueda.alejandra";
             "editor.formatOnSave" = true;
           };
+
+          "direnv.restart.automatic" = true;
         };
 
         extensions = with pkgs.unstable.vscode-extensions; [
@@ -70,6 +82,7 @@ with lib; {
           llvm-vs-code-extensions.vscode-clangd
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit
+          myriad-dreamin.tinymist
         ];
       };
     };

@@ -38,7 +38,7 @@ with lib; {
       ripgrep
       xan
       bottom
-      du-dust
+      dust
       procs
       pciutils
       p7zip

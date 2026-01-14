@@ -97,8 +97,6 @@
 
     nix.nix-ld.enable = true;
 
-    openvpn.sext.enable = true;
-
     yubikey.enable = true;
 
     zsh.enable = true;

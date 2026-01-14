@@ -16,7 +16,6 @@ in {
     ./networking
     ./nix
     ./openrgb
-    ./openvpn
     ./yubikey
     ./zsh
   ];

@@ -16,10 +16,13 @@ in {
   };
 
   config = mkIf config.mine.zsh.enable {
-    home.packages = with pkgs; [delta];
-
     programs.bat.enable = true;
     programs.eza.enable = true;
+
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
 
     programs.zsh = {
       enable = true;
@@ -29,7 +32,7 @@ in {
       syntaxHighlighting.enable = true;
 
       autocd = true;
-      dotDir = ".config/zsh";
+      dotDir = "${config.home.homeDirectory}/.config/zsh";
 
       shellAliases = {
         ls = "eza";

@@ -8,10 +8,6 @@ in {
   # System-specific 3DS AES keys.
   "3ds-aes-keys.age".publicKeys = userKeys ++ hostKeys;
 
-  # OpenVPN network configurations.
-  "sext.ovpn.age".publicKeys = userKeys ++ hostKeys;
-  "sext-creds.auth.age".publicKeys = userKeys ++ hostKeys;
-
   # User account passwords.
   "vale-password.age".publicKeys = userKeys ++ hostKeys;
 }

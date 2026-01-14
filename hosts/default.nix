@@ -15,8 +15,7 @@
     system = config.system;
   in
     inputs.nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = {inherit inputs outputs system;};
+      specialArgs = {inherit inputs outputs;};
 
       modules =
         [
@@ -30,6 +29,8 @@
           {
             system.configurationRevision = revision;
 
+            nixpkgs.hostPlatform = system;
+
             environment.systemPackages = [
               inputs.agenix.packages.${system}.default
             ];
@@ -40,7 +41,7 @@
               useUserPackages = true;
 
               extraSpecialArgs = {
-                inherit inputs outputs system;
+                inherit inputs outputs;
               };
 
               users.vale = {...}: {

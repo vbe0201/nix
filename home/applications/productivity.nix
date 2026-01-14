@@ -11,12 +11,13 @@ with lib; {
 
   config = mkIf config.mine.apps.productivity.enable {
     home.packages = with pkgs; [
+      eduvpn-client
       libreoffice-qt6-fresh
+      rustdesk
       thunderbird
       unstable.proton-pass
       unstable.protonmail-bridge-gui
       unstable.protonvpn-gui
-      unstable.proton-authenticator
       xournalpp
     ];
   };

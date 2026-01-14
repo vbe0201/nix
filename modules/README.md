@@ -86,20 +86,6 @@ makes a desktop icon for it.
 It is recommended to always enable both options when OpenRGB is
 desired unless you have a specific reason not to.
 
-### `openvpn`
-
-OpenVPN client profiles which can be enabled conditionally:
-
-- `mine.openvpn.sext.enable`
-
-Start with:
-
-`sudo systemctl start openvpn-<name>.service`
-
-Stop with:
-
-`sudo systemctl stop openvpn-<name>.service`
-
 ### `yubikey`
 
 `mine.yubikey.enable` enables YubiKey hardware support, sudo login

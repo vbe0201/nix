@@ -17,7 +17,6 @@ with lib; {
         yubikey-personalization
       ]
       ++ lib.optionals (config.services.xserver.enable) [
-        yubikey-personalization-gui
         yubioath-flutter
       ];
 
@@ -26,13 +25,15 @@ with lib; {
       udev.packages = with pkgs; [yubikey-personalization];
     };
 
-    # TODO: u2f_keys in config and in a non-default location
-    #       https://joinemm.dev/blog/yubikey-nixos-guide
     security.pam = {
       u2f = {
         enable = true;
         settings = {
-          interactive = true;
+          origin = "pam://yubi";
+          authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+            "vale"
+            ":R4I5eUXW2jq2sEDJeSGmOIePJPfB8J0p/gnJ453aT+dOWPTvRcxvlyJrNzc7ZMzgVznNIID7t12vCtU128yowA==,FCSZEls7lYCl82BsFQ+9yDc/DLrHB20RgO7rQOIiFdk1gZPSx4qR6EqrAAL4fhleno+6kHzN75M+fhEJl3PXzQ==,es256,+presence"
+          ]);
           cue = true;
         };
       };

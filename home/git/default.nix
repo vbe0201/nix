@@ -23,22 +23,22 @@ in {
 
     programs.git = {
       enable = true;
-      package = pkgs.gitAndTools.gitFull;
-
-      userName = mkDefault "Valentin B.";
-      userEmail = mkDefault "valentin.be@protonmail.com";
+      package = pkgs.gitFull;
 
       signing = {
         key = mkDefault "AB0A082D7A817911";
         signByDefault = true;
       };
 
-      extraConfig = {
+      settings = {
         pull.rebase = true;
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
 
         user = {
+          name = mkDefault "Valentin B.";
+          email = mkDefault "valentin.be@protonmail.com";
+
           useConfigOnly = true;
 
           personal = {
@@ -47,25 +47,23 @@ in {
             signingKey = "AB0A082D7A817911";
           };
         };
-      };
 
-      delta.enable = true;
+        alias = {
+          # This seems redundant as `git identity` will already call
+          # the `git-identity` script, but this gives autocomplete.
+          identity = "! git-identity";
+
+          id = "! git-identity";
+          st = "status";
+          co = "checkout";
+          lp = "log -p";
+          p = "push";
+          c = "commit";
+          a = "add";
+        };
+      };
 
       lfs.enable = true;
-
-      aliases = {
-        # This seems redundant as `git identity` will already call
-        # the `git-identity` script, but this gives autocomplete.
-        identity = "! git-identity";
-
-        id = "! git-identity";
-        st = "status";
-        co = "checkout";
-        lp = "log -p";
-        p = "push";
-        c = "commit";
-        a = "add";
-      };
     };
   };
 }

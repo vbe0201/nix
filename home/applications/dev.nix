@@ -4,7 +4,11 @@
   pkgs,
   ...
 }:
-with lib; {
+with lib; let
+  jb-wayland = pkg: (pkg.override {
+    vmopts = "-Dawt.toolkit.name=WLToolkit";
+  });
+in {
   options.mine.apps.dev = {
     enable = mkEnableOption "software for development";
   };
@@ -41,10 +45,9 @@ with lib; {
       gnumake
       qemu
 
-      unstable.jetbrains.clion
-      unstable.jetbrains.idea-ultimate
-      unstable.jetbrains.rider
-      unstable.jetbrains.pycharm-professional
+      (jb-wayland unstable.jetbrains.clion)
+      (jb-wayland unstable.jetbrains.idea)
+      (jb-wayland unstable.jetbrains.rider)
 
       (ghidra.withExtensions (p:
         with p; [
