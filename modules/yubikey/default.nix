@@ -32,7 +32,7 @@ with lib; {
           origin = "pam://yubi";
           authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
             "vale"
-            ":R4I5eUXW2jq2sEDJeSGmOIePJPfB8J0p/gnJ453aT+dOWPTvRcxvlyJrNzc7ZMzgVznNIID7t12vCtU128yowA==,FCSZEls7lYCl82BsFQ+9yDc/DLrHB20RgO7rQOIiFdk1gZPSx4qR6EqrAAL4fhleno+6kHzN75M+fhEJl3PXzQ==,es256,+presence"
+            ":QeXsm34JLxInTNSlFwWjy0cK2qgxIlEcmShCMRPTJe5EsoHrsNHEJQVCaPOskfiOEJmw+kWMK6wqKtDJeSYtdw==,BJG4r9FcNXTA3XDThgOCsw13v0EzOPTdApRnugPwK1LpweNZZQcT5cIRKy9HCOlyDpxKOwvMYi/YEDjkLZSd0Q==,es256,+presence"
           ]);
           cue = true;
         };
