@@ -5,7 +5,7 @@
   ## Also enables access to unfree packages by default.
   unstable-unfree-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
-      system = final.system;
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
   };
