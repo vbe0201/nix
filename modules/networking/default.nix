@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; {
@@ -16,6 +17,9 @@ with lib; {
     networking = {
       networkmanager = {
         enable = true;
+        plugins = with pkgs; [
+          networkmanager-openvpn
+        ];
         connectionConfig = {
           "connection.mdns" = 2;
         };
