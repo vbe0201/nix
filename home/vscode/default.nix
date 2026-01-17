@@ -10,8 +10,13 @@ with lib; {
   };
 
   config = mkIf config.mine.vscode.enable {
+    home.shellAliases = {
+      code = "${config.programs.vscode.package}/bin/codium";
+    };
+
     programs.vscode = {
       enable = true;
+      package = pkgs.vscodium;
 
       profiles.default = {
         enableUpdateCheck = false;
