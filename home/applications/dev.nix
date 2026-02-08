@@ -49,7 +49,7 @@ in {
       (jb-wayland unstable.jetbrains.idea)
       (jb-wayland unstable.jetbrains.rider)
 
-      (ghidra.withExtensions (p:
+      (unstable.ghidra.withExtensions (p:
         with p; [
           findcrypt
           ghidra-delinker-extension
