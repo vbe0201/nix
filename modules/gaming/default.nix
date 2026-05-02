@@ -21,7 +21,7 @@ with lib; {
 
     environment.systemPackages = with pkgs; [
       protonup-qt
-      unstable.wineWowPackages.unstableFull
+      unstable.wineWow64Packages.unstableFull
       lutris
       bottles
       heroic

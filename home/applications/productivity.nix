@@ -17,7 +17,7 @@ with lib; {
       thunderbird
       unstable.proton-pass
       unstable.protonmail-bridge-gui
-      unstable.protonvpn-gui
+      unstable.proton-vpn
       xournalpp
     ];
   };
