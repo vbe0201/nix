@@ -74,9 +74,10 @@
   };
 
   services = {
-    logind.lidSwitch = "suspend-then-hibernate";
+    logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
     upower.enable = true;
     thermald.enable = true;
+    fprintd.enable = true;
   };
 
   systemd.sleep.extraConfig = ''
