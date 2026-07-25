@@ -48,7 +48,11 @@
     };
   };
 
-  hardware.cpu.intel.updateMicrocode = true;
+  hardware = {
+    cpu.intel.updateMicrocode = true;
+
+    acpilight.enable = true;
+  };
 
   fileSystems = {
     "/" = {
@@ -80,11 +84,10 @@
     fprintd.enable = true;
   };
 
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "1";
+  };
 
-  programs.light.enable = true;
   environment.systemPackages = with pkgs; [powertop];
 
   mine = {
