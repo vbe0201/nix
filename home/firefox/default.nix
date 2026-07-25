@@ -20,11 +20,12 @@ with lib; {
         MOZ_USE_XINPUT2 = "1";
       }
       // optionalAttrs config.mine.firefox.defaultBrowser {
-        BROWSER = "${config.programs.firefox.package}/bin/firefox";
+        BROWSER = lib.getExe config.programs.firefox.package;
       };
 
     programs.firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles."${config.home.username}" = {
         search = {
           default = "google";

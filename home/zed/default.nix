@@ -11,7 +11,7 @@ with lib; {
   config = mkIf config.mine.zed.enable {
     # The Nix package calls the binary zeditor, which is annoying.
     home.shellAliases = {
-      zed = "${config.programs.zed-editor.package}/bin/zeditor";
+      zed = lib.getExe config.programs.zed-editor.package;
     };
 
     programs.zed-editor = {

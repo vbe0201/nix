@@ -19,8 +19,9 @@ with lib; {
       userDirs = {
         enable = true;
         createDirectories = true;
+        setSessionVariables = false;
         extraConfig = {
-          XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
+          SCREENSHOTS = "$HOME/Pictures/Screenshots";
         };
       };
     };

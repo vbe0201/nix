@@ -18,10 +18,10 @@ with lib; {
   config = mkIf config.mine.chromium.enable {
     home.sessionVariables =
       {
-        CHROME_EXECUTABLE = "${config.programs.chromium.package}/bin/chromium-browser";
+        CHROME_EXECUTABLE = lib.getExe config.programs.chromium.package;
       }
       // optionalAttrs config.mine.chromium.defaultBrowser {
-        BROWSER = "${config.programs.chromium.package}/bin/chromium-browser";
+        BROWSER = lib.getExe config.programs.chromium.package;
       };
 
     programs.chromium = {

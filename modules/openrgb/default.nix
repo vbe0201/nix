@@ -25,7 +25,7 @@ with lib; {
           desktopName = "OpenRGB";
           comment = "Control RGB lighting";
           icon = "OpenRGB";
-          exec = "${pkgs.openrgb}/bin/openrgb";
+          exec = lib.getExe pkgs.openrgb;
           terminal = false;
           categories = ["Utility"];
         })

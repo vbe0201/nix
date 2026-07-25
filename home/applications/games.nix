@@ -12,8 +12,7 @@ with lib; {
   config = mkIf config.mine.apps.games.enable {
     home.packages = with pkgs; [
       unstable.dolphin-emu
-      melonDS
-      duckstation
+      melonds
       mame
       pcsx2
       mupen64plus

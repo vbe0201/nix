@@ -22,7 +22,7 @@ in {
 
   config = mkIf config.mine.alacritty.enable {
     home.sessionVariables = {
-      TERMINAL = "${config.programs.alacritty.package}/bin/alacritty";
+      TERMINAL = lib.getExe config.programs.alacritty.package;
     };
 
     programs.alacritty = {

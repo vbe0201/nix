@@ -6,7 +6,7 @@
 }:
 with lib; let
   jb-wayland = pkg: (pkg.override {
-    vmopts = "-Dawt.toolkit.name=WLToolkit";
+    forceWayland = true;
   });
 in {
   options.mine.apps.dev = {
@@ -56,7 +56,6 @@ in {
           machinelearning
           ret-sync
           sleighdevtools
-          wasm
         ]))
       wireshark
       unstable.imhex

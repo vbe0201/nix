@@ -13,7 +13,6 @@ with lib; {
     home.packages = with pkgs; [
       eduvpn-client
       libreoffice-qt6-fresh
-      rustdesk
       thunderbird
       unstable.proton-pass
       unstable.protonmail-bridge-gui

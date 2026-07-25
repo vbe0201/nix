@@ -11,10 +11,10 @@ with lib; {
 
   config = mkIf config.mine.vscode.enable {
     home.shellAliases = {
-      code = "${config.programs.vscode.package}/bin/codium";
+      code = lib.getExe config.programs.vscodium.package;
     };
 
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
       package = pkgs.vscodium;
 
@@ -49,24 +49,14 @@ with lib; {
               "source.organizeImports" = "explicit";
             };
           };
-          "python.analysis.inlayHints.functionReturnTypes" = true;
-          "python.analysis.inlayHints.variableTypes" = true;
-          "python.analysis.inlayHints.pytestParameters" = true;
-          "python.analysis.typeCheckingMode" = "basic";
           "python.testing.pytestEnabled" = true;
           "python.terminal.activateEnvironment" = false;
-          "python.analysis.exclude" = [
-            "result"
-            ".direnv"
-            ".venv"
-            "venv"
-          ];
 
           "C_Cpp.intelliSenseEngine" = "disabled";
           "C_Cpp.clang_format_fallbackStyle" = "none";
 
           "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "${pkgs.nil}/bin/nil";
+          "nix.serverPath" = lib.getExe pkgs.nil;
           "[nix]" = {
             "editor.defaultFormatter" = "kamadorueda.alejandra";
             "editor.formatOnSave" = true;

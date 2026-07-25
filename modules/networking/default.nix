@@ -33,9 +33,6 @@ with lib; {
         "2606:4700:4700::1001"
       ];
 
-      # No need for wpa_supplicant as NetworkManager is used.
-      wireless.enable = false;
-
       # Conflicts with NetworkManager's dhclient as both programs
       # try to bind to the same address. So we disable it here.
       dhcpcd.enable = false;

@@ -27,7 +27,10 @@
     initrd.kernelModules = [];
 
     kernelModules = ["kvm-amd"];
-    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    extraModulePackages = [
+      config.boot.kernelPackages.v4l2loopback
+      config.boot.kernelPackages.nvidiaPackages.legacy_580
+    ];
 
     loader = {
       systemd-boot.enable = true;
@@ -37,7 +40,11 @@
     supportedFilesystems = ["ntfs"];
   };
 
-  hardware.cpu.amd.updateMicrocode = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
+
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+  };
 
   fileSystems = {
     "/" = {
