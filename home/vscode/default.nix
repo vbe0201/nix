@@ -37,7 +37,7 @@ with lib; {
 
           "chat.agent.enabled" = false;
           "chat.disableAIFeatures" = true;
-          "chat.commandCenter.enabled" = false;
+          "terminal.integrated.initialHint" = false;
 
           "rust-analyzer.check.command" = "clippy";
           "rust-analyzer.inlayHints.lifetimeElisionHints.enable" = "skip_trivial";
