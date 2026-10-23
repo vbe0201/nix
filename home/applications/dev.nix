@@ -4,11 +4,7 @@
   pkgs,
   ...
 }:
-with lib; let
-  jb-wayland = pkg: (pkg.override {
-    forceWayland = true;
-  });
-in {
+with lib; {
   options.mine.apps.dev = {
     enable = mkEnableOption "software for development";
   };
@@ -40,9 +36,9 @@ in {
       gnumake
       qemu
 
-      (jb-wayland unstable.jetbrains.clion)
-      (jb-wayland unstable.jetbrains.idea)
-      (jb-wayland unstable.jetbrains.rider)
+      unstable.clion
+      unstable.intellij-idea
+      unstable.rider
 
       (unstable.ghidra.withExtensions (p:
         with p; [
