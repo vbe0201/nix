@@ -46,4 +46,10 @@ in {
     # Allow using SSH keys to authenticate when in a remote connection.
     pam.sshAgentAuth.enable = true;
   };
+
+  # Keep the persistent journal from growing to its default cap of
+  # 10% of the root filesystem.
+  services.journald.extraConfig = ''
+    SystemMaxUse=1G
+  '';
 }

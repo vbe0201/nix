@@ -13,23 +13,15 @@ with lib; {
     virtualisation = {
       containers.enable = true;
 
-      docker = {
+      # Only run the per-user rootless daemon. The system-wide one
+      # stays disabled since access to it is equivalent to root.
+      docker.rootless = {
         enable = true;
-        storageDriver = "overlay2";
-        rootless = {
-          enable = true;
-          setSocketVariable = true;
+        setSocketVariable = true;
+        daemon.settings = {
+          storage-driver = "overlay2";
         };
-        autoPrune = {
-          enable = true;
-          dates = "weekly";
-        };
-        extraOptions = ''
-          --experimental
-        '';
       };
-
-      oci-containers.backend = "docker";
     };
 
     environment.systemPackages = with pkgs; [
@@ -42,7 +34,5 @@ with lib; {
       # We need to inform it of the rootless Docker setup or it breaks.
       CROSS_ROOTLESS_CONTAINER_ENGINE = "1";
     };
-
-    users.users.vale.extraGroups = ["docker"];
   };
 }
