@@ -111,7 +111,10 @@
 
     networking.enable = true;
 
-    nix.nix-ld.enable = true;
+    nix = {
+      nix-ld.enable = true;
+      devShellCleanup.enable = true;
+    };
 
     yubikey.enable = true;
 

@@ -29,11 +29,6 @@ in {
 
     programs.jq.enable = mkDefault true;
 
-    programs.direnv = {
-      enable = mkDefault true;
-      nix-direnv.enable = mkDefault true;
-    };
-
     home.packages = with pkgs; [
       python314
       rustup
