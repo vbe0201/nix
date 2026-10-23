@@ -50,7 +50,5 @@ with lib; {
         bind K confirm kill-session
       '';
     };
-
-    programs.tmate.enable = true;
   };
 }

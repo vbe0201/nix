@@ -45,6 +45,6 @@ with lib; {
       };
     };
 
-    catppuccin.firefox.profiles.default.enable = false;
+    catppuccin.firefox.enable = false;
   };
 }
