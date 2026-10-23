@@ -51,6 +51,7 @@ with lib; {
           };
           "python.testing.pytestEnabled" = true;
           "python.terminal.activateEnvironment" = false;
+          "python.languageServer" = "None";
 
           "C_Cpp.intelliSenseEngine" = "disabled";
           "C_Cpp.clang_format_fallbackStyle" = "none";
@@ -73,6 +74,7 @@ with lib; {
           tamasfe.even-better-toml
           rust-lang.rust-analyzer
           ms-python.python
+          astral-sh.ty
           ms-vscode.cpptools
           llvm-vs-code-extensions.vscode-clangd
           ms-vscode-remote.remote-ssh
