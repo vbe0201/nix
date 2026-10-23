@@ -90,7 +90,9 @@ in {
         name = "dev-shell-cleanup";
         runtimeInputs = with pkgs; [coreutils findutils];
         text = ''
-          for dir in ${escapeShellArgs cfg.directories}; do
+          directories=(${escapeShellArgs cfg.directories})
+
+          for dir in "''${directories[@]}"; do
             [ -d "$dir" ] || continue
 
             find "$dir" \
