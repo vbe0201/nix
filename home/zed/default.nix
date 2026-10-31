@@ -71,6 +71,11 @@ with lib; {
             ];
           };
 
+          ty.binary = {
+            path_lookup = true;
+            arguments = ["server"];
+          };
+
           rust-analyzer = {
             initialization_options.cargo = {
               allFeatures = true;
@@ -92,6 +97,12 @@ with lib; {
           };
 
           nix.binary.path_lookup = true;
+        };
+
+        languages = {
+          Python = {
+            language_servers = ["ty" "ruff"];
+          };
         };
 
         telemetry = {
