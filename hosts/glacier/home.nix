@@ -24,6 +24,8 @@
 
     gpg.enable = true;
 
+    lutris.enable = true;
+
     tmux.enable = true;
 
     vscode.enable = true;

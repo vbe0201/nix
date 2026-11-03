@@ -12,6 +12,7 @@ with lib; {
     ./fonts
     ./git
     ./gpg
+    ./lutris
     ./tmux
     ./vscode
     ./xdg

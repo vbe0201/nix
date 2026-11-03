@@ -25,7 +25,7 @@ This setup is universal and shared between all supported desktops:
 
 ### `gaming`
 
-`mine.gaming.enable` provides Steam, Wine, Lutris, Bottles and
+`mine.gaming.enable` provides Steam, Wine, Bottles and
 Heroic for Linux gaming.
 
 ### `hardware`
